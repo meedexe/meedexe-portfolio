@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MEEDEXE — Creative Developer & Digital Architect</title>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,14 +11,7 @@
     <style>
       :root { color-scheme: dark; }
       html, body { height: 100%; scroll-behavior: smooth; }
-      body {
-        overflow-x: hidden;
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
-        -webkit-tap-highlight-color: transparent;
-      }
-
-      .safe-top { padding-top: env(safe-area-inset-top); }
-      .safe-bot { padding-bottom: env(safe-area-inset-bottom); }
+      body { overflow-x: hidden; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
 
       .bg-grid {
         background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.05) 1px, transparent 0);
@@ -40,7 +33,7 @@
       }
 
       .bg-vignette {
-        background:
+        background: 
           radial-gradient(1200px 700px at 15% 10%, rgba(59,130,246,.12), transparent 60%),
           radial-gradient(900px 600px at 85% 30%, rgba(34,211,238,.08), transparent 60%),
           linear-gradient(180deg, #020617 0%, #0f172a 100%);
@@ -63,25 +56,26 @@
         66% { transform: translate(-20px, 20px) scale(0.9); }
       }
 
+      /* UPDATED: ASCII Styling with Light Sweep Animation */
       .ascii-container {
-        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace;
+        font-family: 'Courier New', Courier, monospace;
         font-weight: 900;
-        line-height: 1.05;
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 6px;
-        margin-bottom: 2px;
-
-        background: linear-gradient(to right, #3b82f6 0%, #22d3ee 25%, #ffffff 50%, #22d3ee 75%, #3b82f6 100%);
+        line-height: 1.1;
+        display: inline-block;
+        /* Triple-layered gradient for the "moving light" effect */
+        background: linear-gradient(
+          to right, 
+          #3b82f6 0%, 
+          #22d3ee 25%, 
+          #ffffff 50%, 
+          #22d3ee 75%, 
+          #3b82f6 100%
+        );
         background-size: 200% auto;
         -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
-
-        font-size: clamp(0.52rem, 2.7vw, 1.2rem);
+        font-size: clamp(0.45rem, 1.5vw, 1.2rem);
         text-align: left;
         animation: lightSweep 4s linear infinite;
       }
@@ -92,12 +86,10 @@
         100% { background-position: 0% center; filter: drop-shadow(0 0 10px rgba(59,130,246,0.2)); }
       }
 
-      .section-pad { padding-top: 4.5rem; padding-bottom: 4.5rem; }
-      @media (min-width: 768px) { .section-pad { padding-top: 6rem; padding-bottom: 6rem; } }
-
-      .reveal { opacity: 0; transform: translateY(18px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+      .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
       .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
+      /* Syntax Highlighting */
       .code-block { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
       .token-keyword { color: #c678dd; }
       .token-const { color: #e5c07b; }
@@ -105,30 +97,9 @@
       .token-prop { color: #e06c75; }
       .token-punct { color: #abb2bf; }
 
-      ::-webkit-scrollbar { width: 8px; height: 8px; }
+      ::-webkit-scrollbar { width: 8px; }
       ::-webkit-scrollbar-track { background: #020617; }
       ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
-
-      .bottom-nav {
-        position: fixed;
-        left: 0; right: 0; bottom: 0;
-        z-index: 60;
-        padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-        background: rgba(2,6,23,0.72);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        border-top: 1px solid rgba(255,255,255,0.08);
-      }
-
-      @media (hover: none) and (pointer: coarse) {
-        [data-tilt] { transform: none !important; }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        html, body { scroll-behavior: auto; }
-        .blob, .ascii-container { animation: none !important; }
-        .reveal { transition: none !important; opacity: 1; transform: none; }
-      }
     </style>
   </head>
 
@@ -139,37 +110,30 @@
       <div class="blob b2"></div>
     </div>
 
-    <header class="sticky top-0 z-50 border-b border-white/5 bg-slate-950/80 backdrop-blur-xl safe-top">
-      <nav class="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
-        <a href="#top" class="group flex items-center gap-3 min-w-0">
-          <div class="relative h-10 w-10 shrink-0 overflow-hidden rounded-xl ring-1 ring-white/20 transition-transform group-hover:scale-110">
-            <img src="https://i.ibb.co/JwytwC47/92868863.jpg" alt="MEEDEXE" class="h-full w-full object-cover" />
+    <header class="sticky top-0 z-50 border-b border-white/5 bg-slate-950/80 backdrop-blur-xl">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <a href="#top" class="group flex items-center gap-3">
+          <div class="relative h-10 w-10 overflow-hidden rounded-xl ring-1 ring-white/20 transition-transform group-hover:scale-110">
+            <img src="92868863.jpeg" alt="MEEDEXE" class="h-full w-full object-cover" />
           </div>
-          <div class="min-w-0">
-            <div class="truncate text-base sm:text-lg font-bold tracking-tighter">MEEDEXE</div>
-            <div class="truncate text-[11px] sm:text-xs text-slate-400">Creative Developer</div>
-          </div>
+          <span class="text-lg font-bold tracking-tighter">MEEDEXE</span>
         </a>
-
         <div class="hidden md:flex items-center gap-8">
+          <a href="#about" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">About</a>
           <a href="#expertise" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Expertise</a>
           <a href="#stack" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Tech Stack</a>
           <a href="#work" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Projects</a>
-          <a href="#contact" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Contact</a>
         </div>
-
-        <a href="#contact"
-          class="rounded-full bg-blue-600 px-4 sm:px-5 py-2 text-sm font-semibold text-white transition-all hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]">
-          Hire Me
-        </a>
+        <a href="#contact" class="rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition-all hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]">Hire Me</a>
       </nav>
     </header>
 
-    <main id="top" class="mx-auto max-w-7xl px-4 sm:px-6 pb-24 md:pb-0">
-      <section class="flex min-h-[78vh] sm:min-h-[85vh] flex-col justify-center py-14 sm:py-20">
-        <div class="grid items-center gap-10 sm:gap-16 lg:grid-cols-[1.2fr_1fr]">
+    <main id="top" class="mx-auto max-w-7xl px-6">
+      
+      <section class="flex min-h-[85vh] flex-col justify-center py-20">
+        <div class="grid items-center gap-16 lg:grid-cols-[1.2fr_1fr]">
           <div class="reveal">
-            <div class="flex flex-wrap items-center gap-3 mb-7 sm:mb-8">
+            <div class="flex flex-wrap items-center gap-3 mb-8">
               <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300">
                 <span class="relative flex h-2 w-2">
                   <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
@@ -182,8 +146,8 @@
               </div>
             </div>
 
-            <div class="mb-5 sm:mb-6">
-              <pre class="ascii-container" aria-label="MEEDEXE ASCII logo">
+            <div class="mb-6">
+              <pre class="ascii-container">
 ███╗   ███╗███████╗███████╗██████╗ ███████╗██╗  ██╗███████╗
 ████╗ ████║██╔════╝██╔════╝██╔══██╗██╔════╝╚██╗██╔╝██╔════╝
 ██╔████╔██║█████╗  █████╗  ██║  ██║█████╗   ╚███╔╝ █████╗  
@@ -192,35 +156,29 @@
 ╚═╝     ╚═╝╚══════╝╚══════╝╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝</pre>
             </div>
 
-            <h1 class="text-3xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-              Creative Developer<br/>
+            <h1 class="text-3xl font-bold tracking-tight text-white sm:text-5xl leading-tight">
+              Creative Developer <br/>
               <span class="text-slate-400">& Digital Architect.</span>
             </h1>
-
-            <p class="mt-5 sm:mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-slate-400">
-              Crafting exceptional digital experiences at the intersection of design, engineering, and strategy.
+            
+            <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-400">
+              Crafting exceptional digital experiences at the intersection of design, engineering, and strategy. 
               Code isn't just logic—it's the digital DNA of ideas.
             </p>
 
-            <div class="mt-8 sm:mt-10 grid grid-cols-1 sm:flex gap-3 sm:gap-4">
-              <a href="#expertise" class="rounded-xl bg-slate-100 px-6 py-3 text-center font-semibold text-slate-900 transition-all hover:bg-white">
-                Explore My Work
-              </a>
-
-              <a href="https://github.com/MEEDEXE" target="_blank"
-                 class="group flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 font-semibold transition-all hover:bg-white/10">
-                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
-                </svg>
+            <div class="mt-10 flex flex-wrap gap-4">
+              <a href="#expertise" class="rounded-xl bg-slate-100 px-6 py-3 font-semibold text-slate-900 transition-all hover:bg-white">Explore My Work</a>
+              <a href="https://github.com/MEEDEXE" target="_blank" class="group flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 font-semibold transition-all hover:bg-white/10">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
                 <span>GitHub</span>
               </a>
             </div>
           </div>
 
           <div class="tilt-scene reveal relative">
-            <div class="glass shadow-glow relative rounded-[2rem] p-5 sm:p-6 lg:p-8 transition-transform z-10" data-tilt>
+            <div class="glass shadow-glow relative rounded-[2rem] p-6 lg:p-8 transition-transform z-10" data-tilt>
               <div class="rounded-xl bg-[#0d1117] p-4 border border-white/10 font-mono text-sm shadow-inner">
-                <div class="flex gap-2 mb-4 border-b border-white/5 pb-3 items-center">
+                <div class="flex gap-2 mb-4 border-b border-white/5 pb-3">
                   <div class="h-3 w-3 rounded-full bg-red-500"></div>
                   <div class="h-3 w-3 rounded-full bg-yellow-500"></div>
                   <div class="h-3 w-3 rounded-full bg-green-500"></div>
@@ -248,14 +206,15 @@
 
       <hr class="border-white/5 reveal" />
 
-      <section id="expertise" class="section-pad">
-        <div class="reveal mb-10 sm:mb-12 text-center md:text-left">
+      <section id="expertise" class="py-24">
+        <div class="reveal mb-12 text-center md:text-left">
           <h2 class="text-3xl font-bold">🚀 What I Build</h2>
           <p class="mt-2 text-slate-400">Transforming problems into scalable digital solutions.</p>
         </div>
 
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div class="glass-card rounded-3xl p-7 sm:p-8 reveal hover:-translate-y-1 transition-transform">
+          
+          <div class="glass-card rounded-3xl p-8 reveal hover:-translate-y-1 transition-transform">
             <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/20 text-2xl">🌐</div>
             <h3 class="text-xl font-bold mb-3">Web & Mobile Apps</h3>
             <p class="text-sm text-slate-400 mb-4">Full-stack development with modern frameworks and performance optimization.</p>
@@ -266,7 +225,7 @@
             </ul>
           </div>
 
-          <div class="glass-card rounded-3xl p-7 sm:p-8 reveal hover:-translate-y-1 transition-transform">
+          <div class="glass-card rounded-3xl p-8 reveal hover:-translate-y-1 transition-transform">
             <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/20 text-2xl">⚙️</div>
             <h3 class="text-xl font-bold mb-3">Backend & API</h3>
             <p class="text-sm text-slate-400 mb-4">Scalable, secure server solutions built for reliability and speed.</p>
@@ -277,7 +236,7 @@
             </ul>
           </div>
 
-          <div class="glass-card rounded-3xl p-7 sm:p-8 reveal hover:-translate-y-1 transition-transform">
+          <div class="glass-card rounded-3xl p-8 reveal hover:-translate-y-1 transition-transform">
             <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-red-500/20 text-2xl">🔐</div>
             <h3 class="text-xl font-bold mb-3">Cybersecurity</h3>
             <p class="text-sm text-slate-400 mb-4">Ethical hacking, penetration testing, and intelligence gathering.</p>
@@ -288,7 +247,7 @@
             </ul>
           </div>
 
-          <div class="glass-card rounded-3xl p-7 sm:p-8 reveal hover:-translate-y-1 transition-transform">
+          <div class="glass-card rounded-3xl p-8 reveal hover:-translate-y-1 transition-transform">
             <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-500/20 text-2xl">🎨</div>
             <h3 class="text-xl font-bold mb-3">Creative Tech</h3>
             <p class="text-sm text-slate-400 mb-4">Where art meets engineering for unique brand experiences.</p>
@@ -299,7 +258,7 @@
             </ul>
           </div>
 
-          <div class="glass-card md:col-span-2 lg:col-span-2 rounded-3xl p-7 sm:p-8 reveal hover:-translate-y-1 transition-transform">
+          <div class="glass-card md:col-span-2 lg:col-span-2 rounded-3xl p-8 reveal hover:-translate-y-1 transition-transform">
             <div class="flex flex-col md:flex-row gap-6 items-start">
               <div class="mb-4 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-amber-500/20 text-2xl">🏨</div>
               <div>
@@ -318,11 +277,12 @@
               </div>
             </div>
           </div>
+
         </div>
       </section>
 
-      <section id="stack" class="section-pad border-t border-white/5">
-        <div class="reveal mb-10 sm:mb-12 text-center md:text-left">
+      <section id="stack" class="py-20 border-t border-white/5">
+        <div class="reveal mb-12 text-center md:text-left">
           <h2 class="text-3xl font-bold">🛠 Tech Arsenal</h2>
           <p class="mt-2 text-slate-400">The tools I use to build robust digital products.</p>
         </div>
@@ -339,7 +299,7 @@
             </div>
           </div>
 
-          <div class="reveal">
+          <div class="reveal delay-100">
             <h3 class="text-sm uppercase tracking-widest text-slate-500 font-semibold mb-6 border-b border-white/10 pb-2">Backend</h3>
             <div class="flex flex-wrap gap-3">
               <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
@@ -350,7 +310,7 @@
             </div>
           </div>
 
-          <div class="reveal">
+          <div class="reveal delay-200">
             <h3 class="text-sm uppercase tracking-widest text-slate-500 font-semibold mb-6 border-b border-white/10 pb-2">DevOps & Tools</h3>
             <div class="flex flex-wrap gap-3">
               <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux">
@@ -363,15 +323,15 @@
         </div>
       </section>
 
-      <section id="work" class="section-pad border-t border-white/5">
-        <div class="reveal mb-10 sm:mb-12">
+      <section id="work" class="py-24 border-t border-white/5">
+        <div class="reveal mb-12">
           <h2 class="text-3xl font-bold">🌍 Featured Projects</h2>
           <p class="mt-2 text-slate-400">Live sites and high-impact digital initiatives.</p>
         </div>
 
-        <div class="grid gap-6 md:grid-cols-2">
-          <a href="https://triana.ma/" target="_blank"
-             class="group reveal glass relative overflow-hidden rounded-3xl p-7 sm:p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+          
+          <a href="https://triana.ma/" target="_blank" class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
             <div class="relative z-10">
               <div class="flex items-center justify-between mb-2">
                 <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Chefchaouen Initiative</span>
@@ -382,8 +342,7 @@
             </div>
           </a>
 
-          <a href="https://bachirzairi.com/" target="_blank"
-             class="group reveal glass relative overflow-hidden rounded-3xl p-7 sm:p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
+          <a href="https://bachirzairi.com/" target="_blank" class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
             <div class="relative z-10">
               <div class="flex items-center justify-between mb-2">
                 <span class="text-xs font-bold uppercase tracking-widest text-purple-400">Artist Ecosystems</span>
@@ -394,7 +353,7 @@
             </div>
           </a>
 
-          <div class="group reveal glass-card relative overflow-hidden rounded-3xl p-7 sm:p-8">
+          <div class="group reveal glass-card relative overflow-hidden rounded-3xl p-8">
             <div class="relative z-10">
               <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Educational Platforms</span>
               <h3 class="mt-2 text-2xl font-bold">Learning Systems</h3>
@@ -402,19 +361,21 @@
             </div>
           </div>
 
-          <div class="group reveal glass-card relative overflow-hidden rounded-3xl p-7 sm:p-8">
+          <div class="group reveal glass-card relative overflow-hidden rounded-3xl p-8">
             <div class="relative z-10">
               <span class="text-xs font-bold uppercase tracking-widest text-amber-400">AI-Powered Tools</span>
               <h3 class="mt-2 text-2xl font-bold">Intelligent Automation</h3>
               <p class="mt-4 text-slate-400">Content generation assistants and data analysis dashboards designed to enhance modern productivity workflows.</p>
             </div>
           </div>
+
         </div>
       </section>
 
-      <section class="section-pad border-t border-white/5 reveal">
-        <div class="grid md:grid-cols-2 gap-6 sm:gap-12">
-          <div class="glass p-7 sm:p-8 rounded-3xl">
+      <section class="py-20 border-t border-white/5 reveal">
+        <div class="grid md:grid-cols-2 gap-12">
+          
+          <div class="glass p-8 rounded-3xl">
             <h3 class="text-2xl font-bold mb-6">📈 Current Focus</h3>
             <ul class="space-y-4 text-slate-300">
               <li class="flex items-start gap-3"><span class="text-xl">🎯</span> <span><strong class="text-white">Building</strong> scalable SaaS applications</span></li>
@@ -425,7 +386,7 @@
             </ul>
           </div>
 
-          <div class="glass p-7 sm:p-8 rounded-3xl">
+          <div class="glass p-8 rounded-3xl">
             <h3 class="text-2xl font-bold mb-6">💼 Collaboration & Services</h3>
             <p class="text-slate-400 mb-6">I am currently available for specific engagements and consulting:</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-2 text-slate-300">
@@ -437,28 +398,26 @@
               <div class="flex items-center gap-2">✓ Open-source colabs</div>
             </div>
           </div>
+
         </div>
       </section>
 
-      <footer id="contact" class="section-pad border-t border-white/5">
+      <footer id="contact" class="py-24 border-t border-white/5">
         <div class="reveal text-center max-w-2xl mx-auto">
-          <h2 class="text-3xl sm:text-4xl font-bold mb-5 sm:mb-6">📫 Let's build something great.</h2>
-          <p class="text-slate-400 text-base sm:text-lg mb-8 sm:mb-10">
-            "First, solve the problem. Then, write the code."<br />
+          <h2 class="text-4xl font-bold mb-6">📫 Let's build something great.</h2>
+          <p class="text-slate-400 text-lg mb-10">
+            "First, solve the problem. Then, write the code."<br>
             <span class="text-sm mt-2 inline-block">— Open to remote opportunities and international collaboration.</span>
           </p>
-
-          <div class="grid grid-cols-1 sm:flex justify-center items-center gap-3 sm:gap-4 mb-12 sm:mb-16">
-            <button id="copyEmailBtn"
-              class="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-7 sm:px-8 py-4 font-bold text-white transition-all hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]">
-              ✉️ mkbarrri@gmail.com
-            </button>
-
-            <a href="https://github.com/MEEDEXE" target="_blank"
-              class="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 px-7 sm:px-8 py-4 font-bold text-white transition-all hover:bg-white/10">
-              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.640.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-              MEEDEXE
-            </a>
+          
+          <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
+             <button id="copyEmailBtn" class="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-8 py-4 font-bold text-white transition-all hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]">
+                ✉️ mkbarrri@gmail.com
+             </button>
+             <a href="https://github.com/MEEDEXE" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 px-8 py-4 font-bold text-white transition-all hover:bg-white/10">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                MEEDEXE
+             </a>
           </div>
 
           <div class="text-sm text-slate-500 space-y-2">
@@ -472,49 +431,35 @@
       </footer>
     </main>
 
-    <div class="bottom-nav md:hidden safe-bot">
-      <div class="mx-auto max-w-7xl grid grid-cols-4 gap-2">
-        <a href="#top" class="rounded-xl bg-white/5 border border-white/10 py-2 text-center text-xs font-semibold text-slate-200 hover:bg-white/10">Home</a>
-        <a href="#expertise" class="rounded-xl bg-white/5 border border-white/10 py-2 text-center text-xs font-semibold text-slate-200 hover:bg-white/10">Build</a>
-        <a href="#work" class="rounded-xl bg-white/5 border border-white/10 py-2 text-center text-xs font-semibold text-slate-200 hover:bg-white/10">Work</a>
-        <a href="#contact" class="rounded-xl bg-blue-600 py-2 text-center text-xs font-bold text-white hover:bg-blue-500">Hire</a>
-      </div>
-    </div>
-
     <script>
-      const observerOptions = { threshold: 0.12, rootMargin: "0px 0px -60px 0px" };
+      const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
       const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+        entries.forEach(entry => {
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
+        });
       }, observerOptions);
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-      const isCoarse = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
-      if (!isCoarse) {
-        document.querySelectorAll('[data-tilt]').forEach(card => {
-          card.addEventListener('mousemove', e => {
-            const rect = card.getBoundingClientRect();
-            const x = (e.clientX - rect.left - rect.width / 2) / 22;
-            const y = (rect.height / 2 - (e.clientY - rect.top)) / 22;
-            card.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg)`;
-          });
-          card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-          });
+      document.querySelectorAll('[data-tilt]').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left - rect.width / 2) / 20;
+          const y = (rect.height / 2 - (e.clientY - rect.top)) / 20;
+          card.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg)`;
         });
-      }
+        card.addEventListener('mouseleave', () => card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)');
+      });
 
-      document.getElementById('copyEmailBtn').addEventListener('click', async () => {
-        try { await navigator.clipboard.writeText('mkbarrri@gmail.com'); } catch {}
+      document.getElementById('copyEmailBtn').addEventListener('click', () => {
+        navigator.clipboard.writeText('mkbarrri@gmail.com');
         const btn = document.getElementById('copyEmailBtn');
-        const original = btn.innerHTML;
+        const originalText = btn.innerHTML;
         btn.innerHTML = '✅ Copied to clipboard!';
-        btn.classList.remove('bg-blue-600', 'hover:bg-blue-500');
-        btn.classList.add('bg-emerald-600');
-        setTimeout(() => {
-          btn.innerHTML = original;
-          btn.classList.remove('bg-emerald-600');
-          btn.classList.add('bg-blue-600', 'hover:bg-blue-500');
-        }, 1600);
+        btn.classList.replace('bg-blue-600', 'bg-emerald-600');
+        setTimeout(() => { 
+          btn.innerHTML = originalText; 
+          btn.classList.replace('bg-emerald-600', 'bg-blue-600');
+        }, 2000);
       });
 
       document.getElementById('year').textContent = new Date().getFullYear();
