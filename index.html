@@ -32,28 +32,77 @@
         box-shadow: 0 0 0 1px rgba(59,130,246,.1), 0 20px 50px rgba(0,0,0,.5);
       }
 
+      /* ----- GALAXY BACKGROUND (enhanced) ----- */
       .bg-vignette {
         background: 
-          radial-gradient(1200px 700px at 15% 10%, rgba(59,130,246,.12), transparent 60%),
-          radial-gradient(900px 600px at 85% 30%, rgba(34,211,238,.08), transparent 60%),
-          linear-gradient(180deg, #020617 0%, #0f172a 100%);
+          radial-gradient(1200px 700px at 15% 10%, rgba(59,130,246,.15), transparent 65%),
+          radial-gradient(900px 600px at 85% 30%, rgba(34,211,238,.12), transparent 70%),
+          radial-gradient(1100px 800px at 40% 80%, rgba(168,85,247,.1), transparent 75%),
+          radial-gradient(1000px 900px at 70% 15%, rgba(236,72,153,.1), transparent 80%),
+          linear-gradient(145deg, #030614 0%, #0b1120 50%, #1a1f2f 100%);
       }
 
+      /* floating nebulae blobs */
       .blob {
         position: absolute;
         border-radius: 9999px;
-        filter: blur(80px);
+        filter: blur(90px);
         opacity: 0.5;
-        animation: floaty 20s ease-in-out infinite;
+        animation: floaty 24s ease-in-out infinite;
         will-change: transform;
+        mix-blend-mode: screen;
       }
-      .blob.b1 { width: 500px; height: 500px; left: -10%; top: -10%; background: rgba(59,130,246,0.15); }
-      .blob.b2 { width: 400px; height: 400px; right: -5%; top: 40%; background: rgba(34,211,238,0.1); animation-delay: -5s; }
+      .blob.b1 { width: 550px; height: 550px; left: -8%; top: -5%; background: rgba(59,130,246,0.25); animation-duration: 28s; }
+      .blob.b2 { width: 500px; height: 500px; right: -2%; top: 35%; background: rgba(34,211,238,0.18); animation-delay: -7s; animation-duration: 32s; }
+      .blob.b3 { width: 600px; height: 600px; left: 20%; bottom: -10%; background: rgba(168,85,247,0.16); animation-delay: -14s; animation-duration: 36s; }
+      .blob.b4 { width: 450px; height: 450px; right: 15%; top: 5%; background: rgba(236,72,153,0.2); animation-delay: -3s; animation-duration: 30s; }
+
+      /* starfield layer – tiny twinkling dots */
+      .stars {
+        position: absolute;
+        inset: 0;
+        background-image: 
+          radial-gradient(1.5px 1.5px at 7% 12%, rgba(255,255,255,0.9), transparent 50%),
+          radial-gradient(1px 1px at 23% 45%, rgba(255,255,245,0.8), transparent 50%),
+          radial-gradient(2px 2px at 34% 78%, rgba(255,255,210,0.85), transparent 60%),
+          radial-gradient(1px 1px at 41% 19%, rgba(255,255,255,0.7), transparent 50%),
+          radial-gradient(1.5px 1.5px at 58% 62%, rgba(255,245,200,0.9), transparent 50%),
+          radial-gradient(2px 2px at 63% 33%, rgba(255,255,255,1), transparent 60%),
+          radial-gradient(1px 1px at 72% 84%, rgba(255,240,180,0.8), transparent 50%),
+          radial-gradient(1px 1px at 81% 17%, rgba(255,255,255,0.7), transparent 50%),
+          radial-gradient(1.8px 1.8px at 89% 51%, rgba(255,255,220,0.9), transparent 60%),
+          radial-gradient(1.2px 1.2px at 94% 72%, rgba(255,255,255,0.8), transparent 50%),
+          radial-gradient(1px 1px at 12% 88%, rgba(255,255,255,0.6), transparent 50%),
+          radial-gradient(2px 2px at 27% 34%, rgba(255,250,210,0.9), transparent 60%),
+          radial-gradient(1px 1px at 39% 59%, rgba(255,255,250,0.7), transparent 50%),
+          radial-gradient(1.4px 1.4px at 48% 93%, rgba(255,245,200,0.8), transparent 55%),
+          radial-gradient(1.7px 1.7px at 55% 7%, rgba(255,255,230,0.85), transparent 60%),
+          radial-gradient(1px 1px at 68% 43%, rgba(255,255,255,0.65), transparent 50%),
+          radial-gradient(2px 2px at 76% 26%, rgba(255,250,210,0.9), transparent 60%),
+          radial-gradient(1.3px 1.3px at 84% 68%, rgba(255,255,200,0.75), transparent 55%),
+          radial-gradient(1px 1px at 92% 11%, rgba(255,255,255,0.8), transparent 50%),
+          radial-gradient(1.6px 1.6px at 18% 52%, rgba(255,255,240,0.9), transparent 60%),
+          radial-gradient(1px 1px at 33% 71%, rgba(255,255,250,0.7), transparent 50%),
+          radial-gradient(2.2px 2.2px at 47% 40%, rgba(255,245,190,0.85), transparent 65%),
+          radial-gradient(1px 1px at 60% 94%, rgba(255,255,255,0.6), transparent 50%),
+          radial-gradient(1.9px 1.9px at 74% 15%, rgba(255,255,210,0.9), transparent 60%),
+          radial-gradient(1.1px 1.1px at 86% 81%, rgba(255,255,250,0.8), transparent 55%);
+        background-repeat: no-repeat;
+        pointer-events: none;
+        z-index: 0;
+        mix-blend-mode: lighten;
+        animation: twinkle 5s ease-in-out infinite alternate;
+      }
 
       @keyframes floaty {
         0%, 100% { transform: translate(0,0) scale(1); }
-        33% { transform: translate(30px, -50px) scale(1.1); }
-        66% { transform: translate(-20px, 20px) scale(0.9); }
+        33% { transform: translate(40px, -35px) scale(1.15); }
+        66% { transform: translate(-30px, 40px) scale(0.9); }
+      }
+
+      @keyframes twinkle {
+        0% { opacity: 0.7; }
+        100% { opacity: 1; }
       }
 
       /* UPDATED: ASCII Styling with Light Sweep Animation */
@@ -62,7 +111,6 @@
         font-weight: 900;
         line-height: 1.1;
         display: inline-block;
-        /* Triple-layered gradient for the "moving light" effect */
         background: linear-gradient(
           to right, 
           #3b82f6 0%, 
@@ -104,10 +152,16 @@
   </head>
 
   <body class="bg-slate-950 text-slate-100 selection:bg-blue-500/30">
-    <div class="fixed inset-0 -z-10 bg-vignette">
+    <!-- Galaxy background container: nebulae, blobs, stars -->
+    <div class="fixed inset-0 -z-10 bg-vignette overflow-hidden">
       <div class="absolute inset-0 bg-grid"></div>
+      <!-- floating nebulae blobs -->
       <div class="blob b1"></div>
       <div class="blob b2"></div>
+      <div class="blob b3"></div>
+      <div class="blob b4"></div>
+      <!-- starfield layer -->
+      <div class="stars"></div>
     </div>
 
     <header class="sticky top-0 z-50 border-b border-white/5 bg-slate-950/80 backdrop-blur-xl">
