@@ -32,7 +32,6 @@
         box-shadow: 0 0 0 1px rgba(59,130,246,.1), 0 20px 50px rgba(0,0,0,.5);
       }
 
-      /* ----- GALAXY BACKGROUND (enhanced) ----- */
       .bg-vignette {
         background: 
           radial-gradient(1200px 700px at 15% 10%, rgba(59,130,246,.15), transparent 65%),
@@ -42,7 +41,6 @@
           linear-gradient(145deg, #030614 0%, #0b1120 50%, #1a1f2f 100%);
       }
 
-      /* floating nebulae blobs */
       .blob {
         position: absolute;
         border-radius: 9999px;
@@ -57,7 +55,6 @@
       .blob.b3 { width: 600px; height: 600px; left: 20%; bottom: -10%; background: rgba(168,85,247,0.16); animation-delay: -14s; animation-duration: 36s; }
       .blob.b4 { width: 450px; height: 450px; right: 15%; top: 5%; background: rgba(236,72,153,0.2); animation-delay: -3s; animation-duration: 30s; }
 
-      /* starfield layer – tiny twinkling dots */
       .stars {
         position: absolute;
         inset: 0;
@@ -105,7 +102,6 @@
         100% { opacity: 1; }
       }
 
-      /* UPDATED: ASCII Styling with Light Sweep Animation */
       .ascii-container {
         font-family: 'Courier New', Courier, monospace;
         font-weight: 900;
@@ -137,7 +133,6 @@
       .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
       .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-      /* Syntax Highlighting */
       .code-block { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
       .token-keyword { color: #c678dd; }
       .token-const { color: #e5c07b; }
@@ -152,15 +147,12 @@
   </head>
 
   <body class="bg-slate-950 text-slate-100 selection:bg-blue-500/30">
-    <!-- Galaxy background container: nebulae, blobs, stars -->
     <div class="fixed inset-0 -z-10 bg-vignette overflow-hidden">
       <div class="absolute inset-0 bg-grid"></div>
-      <!-- floating nebulae blobs -->
       <div class="blob b1"></div>
       <div class="blob b2"></div>
       <div class="blob b3"></div>
       <div class="blob b4"></div>
-      <!-- starfield layer -->
       <div class="stars"></div>
     </div>
 
@@ -183,7 +175,6 @@
     </header>
 
     <main id="top" class="mx-auto max-w-7xl px-6">
-      
       <section class="flex min-h-[85vh] flex-col justify-center py-20">
         <div class="grid items-center gap-16 lg:grid-cols-[1.2fr_1fr]">
           <div class="reveal">
@@ -267,7 +258,6 @@
         </div>
 
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          
           <div class="glass-card rounded-3xl p-8 reveal hover:-translate-y-1 transition-transform">
             <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/20 text-2xl">🌐</div>
             <h3 class="text-xl font-bold mb-3">Web & Mobile Apps</h3>
@@ -331,7 +321,6 @@
               </div>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -384,7 +373,6 @@
         </div>
 
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
-          
           <a href="https://triana.ma/" target="_blank" class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
             <div class="relative z-10">
               <div class="flex items-center justify-between mb-2">
@@ -407,28 +395,45 @@
             </div>
           </a>
 
-          <div class="group reveal glass-card relative overflow-hidden rounded-3xl p-8">
+          <div class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
             <div class="relative z-10">
-              <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Educational Platforms</span>
-              <h3 class="mt-2 text-2xl font-bold">Learning Systems</h3>
-              <p class="mt-4 text-slate-400">Tools that guide, inform, and empower through interactive learning experiences and career orientation systems.</p>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Restaurant Web App</span>
+                <span class="text-xs text-slate-500">Mandala System</span>
+              </div>
+              <h3 class="text-2xl font-bold">Mandala Pizzeria System</h3>
+              <p class="mt-4 text-slate-400">React + Vite (TypeScript) ordering experience with multilingual menu, cart workflow, business-hours logic, and Firestore orders.</p>
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">React</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Vite</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">TypeScript</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Tailwind</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Firebase</span>
+              </div>
             </div>
           </div>
 
-          <div class="group reveal glass-card relative overflow-hidden rounded-3xl p-8">
+          <div class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
             <div class="relative z-10">
-              <span class="text-xs font-bold uppercase tracking-widest text-amber-400">AI-Powered Tools</span>
-              <h3 class="mt-2 text-2xl font-bold">Intelligent Automation</h3>
-              <p class="mt-4 text-slate-400">Content generation assistants and data analysis dashboards designed to enhance modern productivity workflows.</p>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Chess & Culture</span>
+                <span class="text-xs text-slate-500">Chefchaouen</span>
+              </div>
+              <h3 class="text-2xl font-bold">Association Alwan Fannia d’Échecs</h3>
+              <p class="mt-4 text-slate-400">Modern association website for editions, announcements, registrations, and highlighting Chefchaouen’s chess heritage.</p>
+              <div class="mt-5 flex flex-wrap gap-2">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Next.js / React</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">SEO</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">CMS-ready</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Multilingual</span>
+              </div>
             </div>
           </div>
-
         </div>
       </section>
 
       <section class="py-20 border-t border-white/5 reveal">
         <div class="grid md:grid-cols-2 gap-12">
-          
           <div class="glass p-8 rounded-3xl">
             <h3 class="text-2xl font-bold mb-6">📈 Current Focus</h3>
             <ul class="space-y-4 text-slate-300">
@@ -452,7 +457,6 @@
               <div class="flex items-center gap-2">✓ Open-source colabs</div>
             </div>
           </div>
-
         </div>
       </section>
 
