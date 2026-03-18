@@ -21,34 +21,44 @@
     .bg-grid { position: absolute; inset: 0;
       background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
       background-size: 60px 60px; }
-    .blob { position: absolute; border-radius: 9999px; filter: blur(100px); opacity: .35; mix-blend-mode: screen; animation: drift ease-in-out infinite; }
-    .b1{width:700px;height:700px;left:-10%;top:-10%;background:rgba(59,130,246,.3);animation-duration:30s;}
-    .b2{width:600px;height:600px;right:-5%;top:30%;background:rgba(34,211,238,.2);animation-duration:36s;animation-delay:-10s;}
-    .b3{width:800px;height:800px;left:15%;bottom:-15%;background:rgba(168,85,247,.18);animation-duration:42s;animation-delay:-20s;}
-    @keyframes drift { 0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(50px,-40px) scale(1.1);}66%{transform:translate(-40px,50px) scale(.92);} }
+    .blob { position: absolute; border-radius: 9999px; filter: blur(80px); opacity: .25; mix-blend-mode: screen; animation: drift ease-in-out infinite; }
+    .b1{width:min(700px,90vw);height:min(700px,90vw);left:-10%;top:-10%;background:rgba(59,130,246,.3);animation-duration:30s;}
+    .b2{width:min(600px,80vw);height:min(600px,80vw);right:-5%;top:30%;background:rgba(34,211,238,.2);animation-duration:36s;animation-delay:-10s;}
+    .b3{width:min(700px,90vw);height:min(700px,90vw);left:10%;bottom:-15%;background:rgba(168,85,247,.18);animation-duration:42s;animation-delay:-20s;}
+    @keyframes drift { 0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(30px,-25px) scale(1.08);}66%{transform:translate(-25px,30px) scale(.94);} }
 
     .font-mono { font-family: 'JetBrains Mono', monospace; }
     .gradient-text { background: linear-gradient(135deg,#fff 0%,#94a3b8 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
 
     .glass { background: rgba(15,23,42,.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.06); }
     .glass-hover { transition: all .3s ease; }
-    .glass-hover:hover { background: rgba(15,23,42,.8); border-color: rgba(255,255,255,.1); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(59,130,246,.1); }
+    @media(hover:hover){ .glass-hover:hover { background: rgba(15,23,42,.8); border-color: rgba(255,255,255,.1); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(59,130,246,.1); } }
 
     .nav-link { position:relative; font-size:.875rem; font-weight:500; color:#64748b; transition:color .2s; }
     .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; right:0; height:1px; background:#3b82f6; transform:scaleX(0); transition:transform .2s; transform-origin:left; }
     .nav-link:hover { color:#fff; }
     .nav-link:hover::after { transform:scaleX(1); }
 
-    .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s cubic-bezier(.22,1,.36,1), transform .7s cubic-bezier(.22,1,.36,1); }
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1); }
     .reveal.visible { opacity:1; transform:translateY(0); }
-    .delay-1{transition-delay:.1s;} .delay-2{transition-delay:.2s;} .delay-3{transition-delay:.3s;} .delay-4{transition-delay:.4s;}
+    .delay-1{transition-delay:.08s;} .delay-2{transition-delay:.16s;} .delay-3{transition-delay:.24s;} .delay-4{transition-delay:.32s;}
 
-    .ascii { font-family:'JetBrains Mono',monospace; font-weight:700; line-height:1.1; font-size:clamp(.4rem,1.3vw,1rem);
+    /* ASCII — hidden on very small screens, shown as gradient text title instead */
+    .ascii-wrap { overflow-x: hidden; max-width: 100%; }
+    .ascii { font-family:'JetBrains Mono',monospace; font-weight:700; line-height:1.15;
+      font-size:clamp(.32rem, 2.4vw, 1rem);
       background:linear-gradient(90deg,#3b82f6,#22d3ee,#fff,#22d3ee,#3b82f6); background-size:300% auto;
-      -webkit-background-clip:text; background-clip:text; color:transparent; animation:sweep 5s linear infinite; }
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      animation:sweep 5s linear infinite;
+      display:block; white-space:pre; }
+    @media(max-width:480px){ .ascii { font-size: clamp(.22rem, 2.8vw, .5rem); } }
     @keyframes sweep { to{background-position:300% center;} }
 
     .token-k{color:#c792ea;} .token-c{color:#ffcb6b;} .token-s{color:#c3e88d;} .token-p{color:#e06c75;} .token-punc{color:#89ddff;} .token-num{color:#f78c6c;}
+
+    /* Code card — smaller font on mobile */
+    .code-pre { font-family:'JetBrains Mono',monospace; font-size:.8rem; line-height:1.7; overflow-x:auto; }
+    @media(max-width:480px){ .code-pre { font-size:.72rem; } }
 
     .skill-bar { height:3px; background:rgba(255,255,255,.06); border-radius:9999px; overflow:hidden; }
     .skill-fill { height:100%; border-radius:9999px; background:linear-gradient(90deg,#3b82f6,#22d3ee); width:0; transition:width 1.2s cubic-bezier(.22,1,.36,1); }
@@ -58,17 +68,39 @@
     .section-label { font-size:.7rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:#3b82f6; }
 
     .btn-primary { background:linear-gradient(135deg,#2563eb,#1d4ed8); box-shadow:0 0 0 1px rgba(59,130,246,.3),inset 0 1px 0 rgba(255,255,255,.1); transition:all .2s; }
-    .btn-primary:hover { background:linear-gradient(135deg,#3b82f6,#2563eb); box-shadow:0 0 0 1px rgba(59,130,246,.5),0 10px 30px rgba(59,130,246,.3),inset 0 1px 0 rgba(255,255,255,.15); transform:translateY(-1px); }
+    .btn-primary:active { transform:scale(.97); }
+    @media(hover:hover){ .btn-primary:hover { background:linear-gradient(135deg,#3b82f6,#2563eb); box-shadow:0 0 0 1px rgba(59,130,246,.5),0 10px 30px rgba(59,130,246,.3); transform:translateY(-1px); } }
     .btn-ghost { border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.04); transition:all .2s; }
-    .btn-ghost:hover { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.2); transform:translateY(-1px); }
+    .btn-ghost:active { transform:scale(.97); }
+    @media(hover:hover){ .btn-ghost:hover { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.2); transform:translateY(-1px); } }
 
-    .tag { display:inline-flex; align-items:center; border-radius:9999px; padding:.25rem .75rem; font-size:.75rem; font-weight:500; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.04); color:#94a3b8; transition:all .2s; }
-    .tag:hover { border-color:rgba(59,130,246,.4); color:#93c5fd; background:rgba(59,130,246,.08); }
+    /* Buttons full-width on small screens */
+    @media(max-width:480px){
+      .btn-block-mobile { width:100%; justify-content:center; }
+    }
+
+    .tag { display:inline-flex; align-items:center; border-radius:9999px; padding:.25rem .7rem; font-size:.72rem; font-weight:500; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.04); color:#94a3b8; transition:all .2s; }
 
     .badge-new { animation:glowGreen 2s ease-in-out infinite; }
     @keyframes glowGreen { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4);}50%{box-shadow:0 0 0 6px rgba(34,197,94,0);} }
     .badge-perf { animation:glowBlue 2.5s ease-in-out infinite; }
     @keyframes glowBlue { 0%,100%{box-shadow:0 0 0 0 rgba(59,130,246,.4);}50%{box-shadow:0 0 0 5px rgba(59,130,246,0);} }
+
+    /* Stats grid on mobile — 2 cols instead of horizontal scroll */
+    @media(max-width:640px){
+      .stats-row { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; }
+      .stats-row > div { border-left:none !important; padding-left:0 !important; background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); border-radius:.75rem; padding:.75rem; text-align:center; }
+    }
+
+    /* Hero section min-height fix on mobile */
+    @media(max-width:768px){
+      .hero-section { min-height:auto; padding-top:5rem; padding-bottom:3rem; }
+    }
+
+    /* Card hover only on non-touch */
+    @media(max-width:1024px){
+      .glass-hover:hover { transform:none; }
+    }
 
     #mobile-menu { display:none; }
     #mobile-menu.open { display:flex; }
@@ -83,7 +115,7 @@
 
 <!-- NAV -->
 <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
-  <div class="mx-auto max-w-7xl px-6">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <nav class="flex items-center justify-between h-16">
       <a href="#top" class="flex items-center gap-3 group">
         <div class="h-9 w-9 rounded-xl overflow-hidden ring-1 ring-white/10 group-hover:ring-blue-500/50 transition-all">
@@ -122,9 +154,9 @@
 <main id="top">
 
 <!-- HERO -->
-<section class="min-h-screen flex flex-col justify-center pt-16 pb-20">
-  <div class="mx-auto max-w-7xl px-6 w-full">
-    <div class="grid lg:grid-cols-[1.15fr_1fr] gap-16 items-center">
+<section class="hero-section min-h-screen flex flex-col justify-center pt-20 pb-12 sm:pb-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 w-full">
+    <div class="grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16 items-center">
       <div>
         <div class="reveal flex flex-wrap gap-2 mb-8">
           <span class="flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/8 px-3 py-1 text-xs font-medium text-emerald-300">
@@ -134,7 +166,7 @@
           <span class="flex items-center gap-2 rounded-full border border-blue-500/25 bg-blue-500/8 px-3 py-1 text-xs font-medium text-blue-300">🇲🇦 Morocco</span>
           <span class="flex items-center gap-2 rounded-full border border-purple-500/25 bg-purple-500/8 px-3 py-1 text-xs font-medium text-purple-300">🌐 Remote-ready</span>
         </div>
-        <div class="reveal delay-1 mb-7 overflow-hidden">
+        <div class="reveal delay-1 mb-6 ascii-wrap">
           <pre class="ascii">
 ███╗   ███╗███████╗███████╗██████╗ ███████╗██╗  ██╗███████╗
 ████╗ ████║██╔════╝██╔════╝██╔══██╗██╔════╝╚██╗██╔╝██╔════╝
@@ -143,22 +175,22 @@
 ██║ ╚═╝ ██║███████╗███████╗██████╔╝███████╗██╔╝ ██╗███████╗
 ╚═╝     ╚═╝╚══════╝╚══════╝╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝</pre>
         </div>
-        <h1 class="reveal delay-1 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]">
+        <h1 class="reveal delay-1 text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]">
           Creative Developer<br>
           <span style="background:linear-gradient(135deg,#64748b,#475569);-webkit-background-clip:text;background-clip:text;color:transparent;">& Digital Architect.</span>
         </h1>
-        <p class="reveal delay-2 mt-6 text-lg text-slate-400 leading-relaxed max-w-lg">
+        <p class="reveal delay-2 mt-5 text-base sm:text-lg text-slate-400 leading-relaxed max-w-lg">
           Crafting exceptional digital experiences at the intersection of <span class="text-slate-200">design</span>, <span class="text-slate-200">engineering</span>, and <span class="text-slate-200">strategy</span>. Code isn't just logic — it's the DNA of ideas.
         </p>
-        <div class="reveal delay-3 mt-10 flex flex-wrap gap-3">
-          <a href="#work" class="btn-primary rounded-xl px-7 py-3 font-semibold text-white text-sm">View Projects</a>
-          <a href="https://github.com/MEEDEXE" target="_blank" class="btn-ghost rounded-xl px-7 py-3 font-semibold text-slate-200 text-sm flex items-center gap-2">
-            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+        <div class="reveal delay-3 mt-8 flex flex-wrap gap-3">
+          <a href="#work" class="btn-primary btn-block-mobile rounded-xl px-7 py-3 font-semibold text-white text-sm">View Projects</a>
+          <a href="https://github.com/MEEDEXE" target="_blank" class="btn-ghost btn-block-mobile rounded-xl px-7 py-3 font-semibold text-slate-200 text-sm flex items-center gap-2">
+            <svg class="h-4 w-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
             GitHub
           </a>
-          <a href="#contact" class="btn-ghost rounded-xl px-7 py-3 font-semibold text-slate-200 text-sm">Contact →</a>
+          <a href="#contact" class="btn-ghost btn-block-mobile rounded-xl px-7 py-3 font-semibold text-slate-200 text-sm">Contact →</a>
         </div>
-        <div class="reveal delay-4 mt-12 flex flex-wrap gap-6 pt-8 border-t border-white/5">
+        <div class="reveal delay-4 mt-10 stats-row flex flex-wrap gap-6 pt-8 border-t border-white/5">
           <div><div class="text-2xl font-bold text-white">5+</div><div class="text-xs text-slate-500 mt-0.5">Live Projects</div></div>
           <div class="border-l border-white/5 pl-6"><div class="text-2xl font-bold text-white">100%</div><div class="text-xs text-slate-500 mt-0.5">PageSpeed</div></div>
           <div class="border-l border-white/5 pl-6"><div class="text-2xl font-bold text-white">4+</div><div class="text-xs text-slate-500 mt-0.5">Languages</div></div>
@@ -166,20 +198,20 @@
         </div>
       </div>
 
-      <!-- Code card -->
-      <div class="reveal delay-2">
+      <!-- Code card — hidden on small mobile, shown lg+ -->
+      <div class="reveal delay-2 hidden sm:block">
         <div class="glass rounded-3xl p-1" style="box-shadow:0 0 0 1px rgba(59,130,246,.1),0 40px 80px rgba(0,0,0,.5)">
           <div class="bg-slate-900/80 rounded-[calc(1.5rem-4px)] p-5 border border-white/5">
             <div class="flex items-center gap-2 mb-5 pb-4 border-b border-white/5">
               <div class="h-3 w-3 rounded-full bg-red-500/80"></div>
               <div class="h-3 w-3 rounded-full bg-yellow-500/80"></div>
               <div class="h-3 w-3 rounded-full bg-emerald-500/80"></div>
-              <span class="ml-3 text-xs font-mono text-slate-500">~/meedexe/identity.ts</span>
-              <span class="ml-auto text-xs font-mono text-emerald-400">● saved</span>
+              <span class="ml-3 text-xs font-mono text-slate-500 truncate">~/meedexe/identity.ts</span>
+              <span class="ml-auto text-xs font-mono text-emerald-400 shrink-0">● saved</span>
             </div>
-            <pre class="font-mono text-sm leading-relaxed overflow-x-auto"><span class="token-k">const</span> <span class="token-c">meedexe</span> <span class="token-punc">=</span> <span class="token-punc">{</span>
+            <pre class="code-pre"><span class="token-k">const</span> <span class="token-c">meedexe</span> <span class="token-punc">=</span> <span class="token-punc">{</span>
   <span class="token-p">name</span><span class="token-punc">:</span>       <span class="token-s">"MEEDEXE"</span><span class="token-punc">,</span>
-  <span class="token-p">role</span><span class="token-punc">:</span>       <span class="token-s">"Creative Dev & Digital Architect"</span><span class="token-punc">,</span>
+  <span class="token-p">role</span><span class="token-punc">:</span>       <span class="token-s">"Creative Dev & Architect"</span><span class="token-punc">,</span>
   <span class="token-p">location</span><span class="token-punc">:</span>   <span class="token-s">"Morocco 🇲🇦"</span><span class="token-punc">,</span>
   <span class="token-p">principles</span><span class="token-punc">:</span> <span class="token-punc">[</span>
     <span class="token-s">"Performance is a feature"</span><span class="token-punc">,</span>
@@ -187,9 +219,9 @@
     <span class="token-s">"Security is not optional"</span><span class="token-punc">,</span>
     <span class="token-s">"UX drives everything"</span><span class="token-punc">,</span>
   <span class="token-punc">],</span>
-  <span class="token-p">stack</span><span class="token-punc">:</span>      <span class="token-s">"React · Next.js · Node · Go"</span><span class="token-punc">,</span>
-  <span class="token-p">available</span><span class="token-punc">:</span>  <span class="token-num">true</span><span class="token-punc">,</span>
-  <span class="token-p">goal</span><span class="token-punc">:</span>       <span class="token-s">"Build products that matter"</span><span class="token-punc">,</span>
+  <span class="token-p">stack</span><span class="token-punc">:</span>  <span class="token-s">"React · Next.js · Node · Go"</span><span class="token-punc">,</span>
+  <span class="token-p">available</span><span class="token-punc">:</span> <span class="token-num">true</span><span class="token-punc">,</span>
+  <span class="token-p">goal</span><span class="token-punc">:</span>   <span class="token-s">"Build products that matter"</span><span class="token-punc">,</span>
 <span class="token-punc">};</span>
 
 <span class="token-k">export default</span> meedexe<span class="token-punc">;</span></pre>
@@ -206,12 +238,12 @@
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="py-24 border-t border-white/5">
-  <div class="mx-auto max-w-7xl px-6">
-    <div class="grid lg:grid-cols-2 gap-16 items-center">
+<section id="about" class="py-16 sm:py-24 border-t border-white/5">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
       <div class="reveal">
         <p class="section-label mb-3">Who I am</p>
-        <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight gradient-text mb-6">Engineer by logic,<br>designer by heart.</h2>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight gradient-text mb-6">Engineer by logic,<br>designer by heart.</h2>
         <p class="text-slate-400 leading-relaxed mb-4">I'm a full-stack developer & digital strategist based in Morocco, building high-performance web solutions for businesses, artists, and organizations across Morocco, Spain, and beyond.</p>
         <p class="text-slate-400 leading-relaxed mb-8">Every project I ship is obsessively crafted — from pixel-perfect UI to bulletproof backend architecture. My work lives at the intersection of design thinking, clean code, and measurable results.</p>
         <div class="flex flex-wrap gap-3">
@@ -250,11 +282,11 @@
 </section>
 
 <!-- EXPERTISE -->
-<section id="expertise" class="py-24 border-t border-white/5">
-  <div class="mx-auto max-w-7xl px-6">
+<section id="expertise" class="py-16 sm:py-24 border-t border-white/5">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="reveal text-center mb-16">
       <p class="section-label mb-3">Services</p>
-      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight gradient-text">What I Build</h2>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight gradient-text">What I Build</h2>
       <p class="mt-3 text-slate-400 max-w-xl mx-auto">Transforming complex problems into elegant, scalable digital solutions.</p>
     </div>
     <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -318,11 +350,11 @@
 </section>
 
 <!-- STACK -->
-<section id="stack" class="py-24 border-t border-white/5">
-  <div class="mx-auto max-w-7xl px-6">
+<section id="stack" class="py-16 sm:py-24 border-t border-white/5">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="reveal text-center mb-16">
       <p class="section-label mb-3">Technologies</p>
-      <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight gradient-text">Tech Arsenal</h2>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight gradient-text">Tech Arsenal</h2>
       <p class="mt-3 text-slate-400">The tools I use to build robust, performant digital products.</p>
     </div>
     <div class="grid md:grid-cols-3 gap-6">
@@ -364,13 +396,13 @@
 </section>
 
 <!-- PROJECTS -->
-<section id="work" class="py-24 border-t border-white/5">
-  <div class="mx-auto max-w-7xl px-6">
+<section id="work" class="py-16 sm:py-24 border-t border-white/5">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="reveal mb-16">
       <p class="section-label mb-3">Portfolio</p>
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight gradient-text">Featured Projects</h2>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight gradient-text">Featured Projects</h2>
           <p class="mt-2 text-slate-400">Live sites and high-impact digital initiatives.</p>
         </div>
         <a href="https://github.com/MEEDEXE" target="_blank" class="btn-ghost rounded-xl px-4 py-2 text-sm text-slate-300 flex items-center gap-2 self-start sm:self-auto">
@@ -379,7 +411,7 @@
         </a>
       </div>
     </div>
-    <div class="grid gap-5 md:grid-cols-2">
+    <div class="grid gap-4 sm:gap-5 md:grid-cols-2">
 
       <!-- Triana -->
       <a href="https://triana.ma/" target="_blank" class="group reveal glass glass-hover rounded-2xl p-8 relative overflow-hidden">
@@ -487,8 +519,8 @@
 </section>
 
 <!-- FOCUS + SERVICES -->
-<section class="py-24 border-t border-white/5">
-  <div class="mx-auto max-w-7xl px-6">
+<section class="py-16 sm:py-24 border-t border-white/5">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="grid md:grid-cols-2 gap-6">
       <div class="reveal glass rounded-2xl p-8">
         <p class="section-label mb-4">Right now</p>
@@ -519,20 +551,20 @@
 </section>
 
 <!-- CONTACT -->
-<footer id="contact" class="py-28 border-t border-white/5">
-  <div class="mx-auto max-w-3xl px-6 text-center">
+<footer id="contact" class="py-16 sm:py-24 border-t border-white/5">
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
     <div class="reveal">
       <p class="section-label mb-4">Get in touch</p>
-      <h2 class="text-4xl sm:text-5xl font-extrabold tracking-tight gradient-text mb-6">Let's build something<br>extraordinary.</h2>
+      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight gradient-text mb-6">Let's build something<br>extraordinary.</h2>
       <p class="text-slate-400 text-lg mb-3 leading-relaxed">"First, solve the problem. Then, write the code."</p>
       <p class="text-slate-500 text-sm mb-12">Open to remote opportunities & international collaboration.</p>
       <div class="flex flex-col sm:flex-row justify-center gap-3 mb-14">
-        <button id="copyEmailBtn" class="btn-primary flex items-center justify-center gap-2.5 rounded-xl px-8 py-4 font-bold text-white">
-          <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+        <button id="copyEmailBtn" class="btn-primary flex items-center justify-center gap-2.5 rounded-xl px-6 py-4 font-bold text-white w-full sm:w-auto">
+          <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           mkbarrri@gmail.com
         </button>
-        <a href="https://github.com/MEEDEXE" target="_blank" class="btn-ghost flex items-center justify-center gap-2.5 rounded-xl px-8 py-4 font-bold text-slate-200">
-          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+        <a href="https://github.com/MEEDEXE" target="_blank" class="btn-ghost flex items-center justify-center gap-2.5 rounded-xl px-6 py-4 font-bold text-slate-200 w-full sm:w-auto">
+          <svg class="h-4 w-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
           GitHub
         </a>
       </div>
@@ -584,12 +616,4 @@
   // Smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const t = document.querySelector(a.getAttribute('href'));
-      if (t) { e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
-    });
-  });
-
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-</body>
-</html>
+      const t = document.q
