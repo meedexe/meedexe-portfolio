@@ -143,6 +143,15 @@
       ::-webkit-scrollbar { width: 8px; }
       ::-webkit-scrollbar-track { background: #020617; }
       ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+
+      /* NEW: badge pulse for 100% performance */
+      .badge-perf {
+        animation: pulseBadge 2s ease-in-out infinite;
+      }
+      @keyframes pulseBadge {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+        50% { box-shadow: 0 0 0 6px rgba(34,197,94,0); }
+      }
     </style>
   </head>
 
@@ -373,28 +382,114 @@
         </div>
 
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+
+          <!-- Triana -->
           <a href="https://triana.ma/" target="_blank" class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
+            <!-- Top glow accent -->
+            <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
             <div class="relative z-10">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Chefchaouen Initiative</span>
-                <span class="text-xs text-slate-500 group-hover:text-blue-400 transition-colors">triana.ma ↗</span>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-blue-400">🏔️ Chefchaouen · Morocco</span>
+                <span class="text-xs font-semibold text-blue-400/80 group-hover:text-blue-300 transition-colors">triana.ma ↗</span>
               </div>
               <h3 class="text-2xl font-bold">Triana Restaurant</h3>
-              <p class="mt-4 text-slate-400">#1 Restaurant Website in Morocco. A high-performance multilingual platform with a custom reservation system, advanced local SEO, and a seamless digital experience designed for Moroccan tourism. </p>
+              <p class="mt-3 text-slate-400 text-sm leading-relaxed">
+                #1 Rooftop Restaurant Website in Morocco. A high-performance multilingual platform with live table reservation, advanced local SEO, and a cinematic Mediterranean–Andalusian identity built for global travelers.
+              </p>
+              <!-- Stats row -->
+              <div class="mt-5 grid grid-cols-3 gap-3 border-t border-white/5 pt-5">
+                <div class="text-center">
+                  <div class="text-lg font-bold text-white">4</div>
+                  <div class="text-xs text-slate-500">Languages</div>
+                </div>
+                <div class="text-center border-x border-white/5">
+                  <div class="text-lg font-bold text-white">100%</div>
+                  <div class="text-xs text-slate-500">PageSpeed</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-lg font-bold text-white">#1</div>
+                  <div class="text-xs text-slate-500">SEO Rank</div>
+                </div>
+              </div>
+              <!-- Tags -->
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Next.js</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Tailwind</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">i18n × 4</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Reservation System</span>
+                <span class="rounded-full border border-blue-500/40 bg-blue-500/10 px-3 py-1 text-xs font-bold text-blue-300">⚡ 100% Perf</span>
+              </div>
             </div>
           </a>
 
+          <!-- Bachir Zairi -->
           <a href="https://bachirzairi.com/" target="_blank" class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
+            <!-- Top glow accent -->
+            <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
             <div class="relative z-10">
-              <div class="flex items-center justify-between mb-2">
-                <span class="text-xs font-bold uppercase tracking-widest text-purple-400">Artist Ecosystems</span>
-                <span class="text-xs text-slate-500 group-hover:text-purple-400 transition-colors">bachirzairi.com ↗</span>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-bold uppercase tracking-widest text-purple-400">🎵 Artist · Morocco 🇲🇦</span>
+                <span class="text-xs font-semibold text-purple-400/80 group-hover:text-purple-300 transition-colors">bachirzairi.com ↗</span>
               </div>
               <h3 class="text-2xl font-bold">Bachir Zairi</h3>
-              <p class="mt-4 text-slate-400">A minimal, focus-driven identity site designed to highlight professional achievements, audio/video integration, and conversion.</p>
+              <p class="mt-3 text-slate-400 text-sm leading-relaxed">
+                Dark, bold, cinematic. A professional artist identity for a Moroccan music producer & songwriter — built for beat sales, artist branding, and international reach. Every pixel reflects the trap & Andalusian soul.
+              </p>
+              <!-- Stats row -->
+              <div class="mt-5 grid grid-cols-3 gap-3 border-t border-white/5 pt-5">
+                <div class="text-center">
+                  <div class="text-lg font-bold text-white">9.2</div>
+                  <div class="text-xs text-slate-500">Design Score</div>
+                </div>
+                <div class="text-center border-x border-white/5">
+                  <div class="text-lg font-bold text-white">2in1</div>
+                  <div class="text-xs text-slate-500">Portfolio + Shop</div>
+                </div>
+                <div class="text-center">
+                  <div class="text-lg font-bold text-white">Dark</div>
+                  <div class="text-xs text-slate-500">Aesthetic</div>
+                </div>
+              </div>
+              <!-- Tags -->
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Branding</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">UI/UX</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Beat Marketplace</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Dark Theme</span>
+                <span class="rounded-full border border-purple-500/40 bg-purple-500/10 px-3 py-1 text-xs font-bold text-purple-300">🎧 Trap · Hip-Hop</span>
+              </div>
             </div>
           </a>
 
+          <!-- ✅ NEW: Hispamar -->
+          <a href="https://asesoriahispamar.com/" target="_blank" class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
+            <!-- NEW badge -->
+            <div class="absolute top-4 right-4 z-20 rounded-full bg-emerald-500/20 border border-emerald-500/40 px-2 py-0.5 text-xs font-bold text-emerald-300 badge-perf">
+              ✦ NEW
+            </div>
+            <div class="relative z-10">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-orange-400">Legal Tech · Spain 🇪🇸🇲🇦</span>
+                <span class="text-xs text-slate-500 group-hover:text-orange-400 transition-colors">asesoriahispamar.com ↗</span>
+              </div>
+              <h3 class="text-2xl font-bold">Asesoría Hispamar</h3>
+              <p class="mt-4 text-slate-400">
+                Professional legal advisory website for immigration & Spanish nationality law in Fuengirola. Multilingual (AR · ES · FR · EN), trust-first design, WhatsApp CTA, SEO-optimized for Google Spain.
+              </p>
+              <div class="mt-5 flex flex-wrap gap-2 items-center">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Next.js</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Tailwind</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">i18n × 4 langs</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">SEO</span>
+                <!-- 100% Performance badge -->
+                <span class="rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-300 flex items-center gap-1">
+                  ⚡ 100% Performance
+                </span>
+              </div>
+            </div>
+          </a>
+
+          <!-- Mandala -->
           <div class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
             <div class="relative z-10">
               <div class="flex items-center justify-between mb-2">
@@ -413,13 +508,14 @@
             </div>
           </div>
 
+          <!-- Association Alwan -->
           <div class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
             <div class="relative z-10">
               <div class="flex items-center justify-between mb-2">
                 <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Chess & Culture</span>
                 <span class="text-xs text-slate-500">Chefchaouen</span>
               </div>
-              <h3 class="text-2xl font-bold">Association Alwan Fannia d’Échecs</h3>
+              <h3 class="text-2xl font-bold">Association Alwan Fannia d'Échecs</h3>
               <p class="mt-4 text-slate-400">Modern association website for editions, announcements, registrations, and highlighting Chefchaouen chess heritage.</p>
               <div class="mt-5 flex flex-wrap gap-2">
                 <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300">Next.js / React</span>
@@ -429,6 +525,7 @@
               </div>
             </div>
           </div>
+
         </div>
       </section>
 
