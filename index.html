@@ -47,7 +47,7 @@
     .reveal.visible { animation: none; }
     .delay-1{transition-delay:.08s;} .delay-2{transition-delay:.16s;} .delay-3{transition-delay:.24s;} .delay-4{transition-delay:.32s;}
 
-    /* ASCII — hidden on very small screens, shown as gradient text title instead */
+
     .ascii-wrap { overflow-x: hidden; max-width: 100%; }
     .ascii { font-family:'JetBrains Mono',monospace; font-weight:700; line-height:1.15;
       font-size:clamp(.32rem, 2.4vw, 1rem);
@@ -60,7 +60,6 @@
 
     .token-k{color:#c792ea;} .token-c{color:#ffcb6b;} .token-s{color:#c3e88d;} .token-p{color:#e06c75;} .token-punc{color:#89ddff;} .token-num{color:#f78c6c;}
 
-    /* Code card — smaller font on mobile */
     .code-pre { font-family:'JetBrains Mono',monospace; font-size:.8rem; line-height:1.7; overflow-x:auto; }
     @media(max-width:480px){ .code-pre { font-size:.72rem; } }
 
@@ -78,7 +77,7 @@
     .btn-ghost:active { transform:scale(.97); }
     @media(hover:hover){ .btn-ghost:hover { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.2); transform:translateY(-1px); } }
 
-    /* Buttons full-width on small screens */
+ 
     @media(max-width:480px){
       .btn-block-mobile { width:100%; justify-content:center; }
     }
@@ -90,18 +89,18 @@
     .badge-perf { animation:glowBlue 2.5s ease-in-out infinite; }
     @keyframes glowBlue { 0%,100%{box-shadow:0 0 0 0 rgba(59,130,246,.4);}50%{box-shadow:0 0 0 5px rgba(59,130,246,0);} }
 
-    /* Stats grid on mobile — 2 cols instead of horizontal scroll */
+  
     @media(max-width:640px){
       .stats-row { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; }
       .stats-row > div { border-left:none !important; padding-left:0 !important; background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); border-radius:.75rem; padding:.75rem; text-align:center; }
     }
 
-    /* Hero section min-height fix on mobile */
+
     @media(max-width:768px){
       .hero-section { min-height:auto; padding-top:5rem; padding-bottom:3rem; }
     }
 
-    /* Card hover only on non-touch */
+ 
     @media(max-width:1024px){
       .glass-hover:hover { transform:none; }
     }
@@ -117,7 +116,7 @@
   <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
 </div>
 
-<!-- NAV -->
+
 <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <nav class="flex items-center justify-between h-16">
@@ -157,7 +156,7 @@
 
 <main id="top">
 
-<!-- HERO -->
+
 <section class="hero-section min-h-screen flex flex-col justify-center pt-20 pb-12 sm:pb-20">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 w-full">
     <div class="grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16 items-center">
@@ -202,7 +201,6 @@
         </div>
       </div>
 
-      <!-- Code card — hidden on small mobile, shown lg+ -->
       <div class="reveal delay-2 hidden sm:block">
         <div class="glass rounded-3xl p-1" style="box-shadow:0 0 0 1px rgba(59,130,246,.1),0 40px 80px rgba(0,0,0,.5)">
           <div class="bg-slate-900/80 rounded-[calc(1.5rem-4px)] p-5 border border-white/5">
@@ -241,7 +239,7 @@
   </div>
 </section>
 
-<!-- ABOUT -->
+
 <section id="about" class="py-16 sm:py-24 border-t border-white/5">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -285,7 +283,7 @@
   </div>
 </section>
 
-<!-- EXPERTISE -->
+
 <section id="expertise" class="py-16 sm:py-24 border-t border-white/5">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="reveal text-center mb-16">
@@ -353,7 +351,7 @@
   </div>
 </section>
 
-<!-- STACK -->
+
 <section id="stack" class="py-16 sm:py-24 border-t border-white/5">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="reveal text-center mb-16">
@@ -399,7 +397,7 @@
   </div>
 </section>
 
-<!-- PROJECTS -->
+
 <section id="work" class="py-16 sm:py-24 border-t border-white/5">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="reveal mb-16">
@@ -417,7 +415,7 @@
     </div>
     <div class="grid gap-4 sm:gap-5 md:grid-cols-2">
 
-      <!-- Triana -->
+      
       <a href="https://triana.ma/" target="_blank" class="group reveal glass glass-hover rounded-2xl p-8 relative overflow-hidden">
         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/60 to-transparent"></div>
         <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-blue-500/5 group-hover:bg-blue-500/10 transition-all blur-2xl"></div>
@@ -439,7 +437,7 @@
         </div>
       </a>
 
-      <!-- Bachir Zairi -->
+    
       <a href="https://bachirzairi.com/" target="_blank" class="group reveal delay-1 glass glass-hover rounded-2xl p-8 relative overflow-hidden">
         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/60 to-transparent"></div>
         <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-purple-500/5 group-hover:bg-purple-500/10 transition-all blur-2xl"></div>
@@ -461,7 +459,6 @@
         </div>
       </a>
 
-      <!-- Hispamar -->
       <a href="https://asesoriahispamar.com/" target="_blank" class="group reveal glass glass-hover rounded-2xl p-8 relative overflow-hidden">
         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-orange-500/60 to-transparent"></div>
         <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-orange-500/5 group-hover:bg-orange-500/10 transition-all blur-2xl"></div>
@@ -484,7 +481,7 @@
         </div>
       </a>
 
-      <!-- Mandala -->
+   
       <div class="reveal delay-1 glass glass-hover rounded-2xl p-8 relative overflow-hidden">
         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"></div>
         <div class="relative z-10">
@@ -499,7 +496,7 @@
         </div>
       </div>
 
-      <!-- Alwan — full width -->
+    
       <div class="reveal glass glass-hover rounded-2xl p-8 relative overflow-hidden md:col-span-2">
         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent"></div>
         <div class="relative z-10 grid sm:grid-cols-[1fr_auto] gap-6 items-start">
@@ -522,7 +519,7 @@
   </div>
 </section>
 
-<!-- FOCUS + SERVICES -->
+
 <section class="py-16 sm:py-24 border-t border-white/5">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="grid md:grid-cols-2 gap-6">
@@ -554,7 +551,7 @@
   </div>
 </section>
 
-<!-- CONTACT -->
+
 <footer id="contact" class="py-16 sm:py-24 border-t border-white/5">
   <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
     <div class="reveal">
@@ -583,7 +580,7 @@
 </main>
 
 <script>
-  // ── Wait for full DOM ──
+ 
   document.addEventListener('DOMContentLoaded', () => {
 
     // ── Reveal on scroll (with immediate check for above-fold elements) ──
@@ -632,7 +629,7 @@
       skillIO.observe(skillSection);
     }
 
-    // ── Sticky nav ──
+   
     const nav = document.getElementById('nav');
     const onScroll = () => {
       if (!nav) return;
@@ -660,7 +657,7 @@
       });
     }
 
-    // ── Copy email ──
+    
     const copyBtn = document.getElementById('copyEmailBtn');
     if (copyBtn) {
       copyBtn.addEventListener('click', () => {
@@ -675,7 +672,7 @@
       });
     }
 
-    // ── Smooth scroll ──
+    
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', e => {
         const target = document.querySelector(a.getAttribute('href'));
@@ -686,7 +683,7 @@
       });
     });
 
-    // ── Year ──
+
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
