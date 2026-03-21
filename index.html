@@ -41,12 +41,10 @@
 
     .reveal { opacity:0; transform:translateY(24px); transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1); }
     .reveal.visible { opacity:1; transform:translateY(0); }
-    /* Fallback: if JS hasn't loaded after 3s, show everything */
     @keyframes forceShow { to { opacity:1; transform:none; } }
     .reveal { animation: forceShow 0s 3s forwards; }
     .reveal.visible { animation: none; }
     .delay-1{transition-delay:.08s;} .delay-2{transition-delay:.16s;} .delay-3{transition-delay:.24s;} .delay-4{transition-delay:.32s;}
-
 
     .ascii-wrap { overflow-x: hidden; max-width: 100%; }
     .ascii { font-family:'JetBrains Mono',monospace; font-weight:700; line-height:1.15;
@@ -77,7 +75,6 @@
     .btn-ghost:active { transform:scale(.97); }
     @media(hover:hover){ .btn-ghost:hover { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.2); transform:translateY(-1px); } }
 
- 
     @media(max-width:480px){
       .btn-block-mobile { width:100%; justify-content:center; }
     }
@@ -89,18 +86,15 @@
     .badge-perf { animation:glowBlue 2.5s ease-in-out infinite; }
     @keyframes glowBlue { 0%,100%{box-shadow:0 0 0 0 rgba(59,130,246,.4);}50%{box-shadow:0 0 0 5px rgba(59,130,246,0);} }
 
-  
     @media(max-width:640px){
       .stats-row { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; }
       .stats-row > div { border-left:none !important; padding-left:0 !important; background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); border-radius:.75rem; padding:.75rem; text-align:center; }
     }
 
-
     @media(max-width:768px){
       .hero-section { min-height:auto; padding-top:5rem; padding-bottom:3rem; }
     }
 
- 
     @media(max-width:1024px){
       .glass-hover:hover { transform:none; }
     }
@@ -115,7 +109,6 @@
   <div class="bg-grid"></div>
   <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
 </div>
-
 
 <header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
@@ -156,7 +149,6 @@
 
 <main id="top">
 
-
 <section class="hero-section min-h-screen flex flex-col justify-center pt-20 pb-12 sm:pb-20">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 w-full">
     <div class="grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16 items-center">
@@ -194,7 +186,7 @@
           <a href="#contact" class="btn-ghost btn-block-mobile rounded-xl px-7 py-3 font-semibold text-slate-200 text-sm">Contact →</a>
         </div>
         <div class="reveal delay-4 mt-10 stats-row flex flex-wrap gap-6 pt-8 border-t border-white/5">
-          <div><div class="text-2xl font-bold text-white">5+</div><div class="text-xs text-slate-500 mt-0.5">Live Projects</div></div>
+          <div><div class="text-2xl font-bold text-white">6+</div><div class="text-xs text-slate-500 mt-0.5">Live Projects</div></div>
           <div class="border-l border-white/5 pl-6"><div class="text-2xl font-bold text-white">100%</div><div class="text-xs text-slate-500 mt-0.5">PageSpeed</div></div>
           <div class="border-l border-white/5 pl-6"><div class="text-2xl font-bold text-white">4+</div><div class="text-xs text-slate-500 mt-0.5">Languages</div></div>
           <div class="border-l border-white/5 pl-6"><div class="text-2xl font-bold text-white">∞</div><div class="text-xs text-slate-500 mt-0.5">Coffee cups</div></div>
@@ -239,14 +231,13 @@
   </div>
 </section>
 
-
 <section id="about" class="py-16 sm:py-24 border-t border-white/5">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
       <div class="reveal">
         <p class="section-label mb-3">Who I am</p>
         <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight gradient-text mb-6">Engineer by logic,<br>designer by heart.</h2>
-        <p class="text-slate-400 leading-relaxed mb-4">I'm a full-stack developer & digital strategist based in Morocco, building high-performance web solutions for businesses, artists, and organizations across Morocco, Spain, and beyond.</p>
+        <p class="text-slate-400 leading-relaxed mb-4">I'm a full-stack developer & digital strategist based in Morocco, building high-performance web solutions for businesses, artists, and organizations across Morocco, Spain, France, and beyond.</p>
         <p class="text-slate-400 leading-relaxed mb-8">Every project I ship is obsessively crafted — from pixel-perfect UI to bulletproof backend architecture. My work lives at the intersection of design thinking, clean code, and measurable results.</p>
         <div class="flex flex-wrap gap-3">
           <span class="tag">🎯 Problem solver</span><span class="tag">🚀 Performance-first</span><span class="tag">🌍 Multilingual</span><span class="tag">🔐 Security-aware</span><span class="tag">🎨 Design-driven</span>
@@ -282,7 +273,6 @@
     </div>
   </div>
 </section>
-
 
 <section id="expertise" class="py-16 sm:py-24 border-t border-white/5">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
@@ -351,7 +341,6 @@
   </div>
 </section>
 
-
 <section id="stack" class="py-16 sm:py-24 border-t border-white/5">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="reveal text-center mb-16">
@@ -397,7 +386,6 @@
   </div>
 </section>
 
-
 <section id="work" class="py-16 sm:py-24 border-t border-white/5">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
     <div class="reveal mb-16">
@@ -437,7 +425,7 @@
         </div>
       </a>
 
-    
+      
       <a href="https://bachirzairi.com/" target="_blank" class="group reveal delay-1 glass glass-hover rounded-2xl p-8 relative overflow-hidden">
         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/60 to-transparent"></div>
         <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-purple-500/5 group-hover:bg-purple-500/10 transition-all blur-2xl"></div>
@@ -459,10 +447,10 @@
         </div>
       </a>
 
+      
       <a href="https://asesoriahispamar.com/" target="_blank" class="group reveal glass glass-hover rounded-2xl p-8 relative overflow-hidden">
         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-orange-500/60 to-transparent"></div>
         <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-orange-500/5 group-hover:bg-orange-500/10 transition-all blur-2xl"></div>
-        <div class="absolute top-5 right-5 badge-new rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2.5 py-0.5 text-xs font-bold text-emerald-300">✦ NEW</div>
         <div class="relative z-10">
           <div class="flex items-start justify-between mb-4">
             <div><span class="section-label text-orange-400">⚖️ Legal Tech · Spain 🇪🇸🇲🇦</span><h3 class="text-xl font-bold mt-1">Asesoría Hispamar</h3></div>
@@ -481,8 +469,34 @@
         </div>
       </a>
 
-   
-      <div class="reveal delay-1 glass glass-hover rounded-2xl p-8 relative overflow-hidden">
+      
+      <a href="https://rachadiwedding.com/" target="_blank" class="group reveal delay-1 glass glass-hover rounded-2xl p-8 relative overflow-hidden">
+        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-rose-400/60 to-transparent"></div>
+        <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-rose-500/5 group-hover:bg-rose-500/10 transition-all blur-2xl"></div>
+        <div class="absolute top-5 right-5 badge-new rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2.5 py-0.5 text-xs font-bold text-emerald-300">✦ NEW</div>
+        <div class="relative z-10">
+          <div class="flex items-start justify-between mb-4">
+            <div>
+              <span class="section-label text-rose-400">💍 Wedding Visual · France 🇫🇷</span>
+              <h3 class="text-xl font-bold mt-1">RH Visual — Wedding Brand</h3>
+            </div>
+            <span class="text-slate-500 group-hover:text-rose-400 transition-colors font-mono text-xs mt-6">rachadiwedding.com ↗</span>
+          </div>
+          <p class="text-slate-400 text-sm leading-relaxed mb-5">Luxury cinematic wedding identity platform for a high-end French visual studio. Elegant, editorial design with immersive full-screen storytelling, curated gallery showcase, and seamless client inquiry flow — crafted to attract couples seeking a premium experience in France.</p>
+          <div class="grid grid-cols-3 gap-3 mb-5 p-4 rounded-xl bg-white/[.02] border border-white/5">
+            <div class="text-center"><div class="text-lg font-bold text-white">Luxury</div><div class="text-xs text-slate-500">Aesthetic</div></div>
+            <div class="text-center border-x border-white/5"><div class="text-lg font-bold text-white">100%</div><div class="text-xs text-slate-500">PageSpeed</div></div>
+            <div class="text-center"><div class="text-lg font-bold text-white">9.5</div><div class="text-xs text-slate-500">Design Score</div></div>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <span class="tag">Next.js</span><span class="tag">Tailwind</span><span class="tag">Framer Motion</span><span class="tag">Gallery UX</span>
+            <span class="inline-flex items-center gap-1 rounded-full border border-rose-500/35 bg-rose-500/10 px-3 py-1 text-xs font-bold text-rose-300">💍 Cinematic · Editorial</span>
+          </div>
+        </div>
+      </a>
+
+      
+      <div class="reveal glass glass-hover rounded-2xl p-8 relative overflow-hidden">
         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-500/40 to-transparent"></div>
         <div class="relative z-10">
           <div class="flex items-start justify-between mb-4">
@@ -496,7 +510,7 @@
         </div>
       </div>
 
-    
+      
       <div class="reveal glass glass-hover rounded-2xl p-8 relative overflow-hidden md:col-span-2">
         <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent"></div>
         <div class="relative z-10 grid sm:grid-cols-[1fr_auto] gap-6 items-start">
@@ -518,7 +532,6 @@
     </div>
   </div>
 </section>
-
 
 <section class="py-16 sm:py-24 border-t border-white/5">
   <div class="mx-auto max-w-7xl px-4 sm:px-6">
@@ -551,7 +564,6 @@
   </div>
 </section>
 
-
 <footer id="contact" class="py-16 sm:py-24 border-t border-white/5">
   <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
     <div class="reveal">
@@ -562,7 +574,7 @@
       <div class="flex flex-col sm:flex-row justify-center gap-3 mb-14">
         <button id="copyEmailBtn" class="btn-primary flex items-center justify-center gap-2.5 rounded-xl px-6 py-4 font-bold text-white w-full sm:w-auto">
           <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="771a1c15160505051e37101a161e1b5914181a">[email&#160;protected]</a>
+          mkbarrri@gmail.com
         </button>
         <a href="https://github.com/MEEDEXE" target="_blank" class="btn-ghost flex items-center justify-center gap-2.5 rounded-xl px-6 py-4 font-bold text-slate-200 w-full sm:w-auto">
           <svg class="h-4 w-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
@@ -580,12 +592,10 @@
 </main>
 
 <script>
- 
   document.addEventListener('DOMContentLoaded', () => {
 
-    // ── Reveal on scroll (with immediate check for above-fold elements) ──
+    
     const revealEls = document.querySelectorAll('.reveal');
-
     if ('IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -595,25 +605,18 @@
           }
         });
       }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
-
       revealEls.forEach(el => io.observe(el));
-
-      // Force-show elements that are already in viewport on load
       setTimeout(() => {
         revealEls.forEach(el => {
           const rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight) {
-            el.classList.add('visible');
-          }
+          if (rect.top < window.innerHeight) el.classList.add('visible');
         });
       }, 100);
-
     } else {
-      // Fallback: show everything if IntersectionObserver not supported
       revealEls.forEach(el => el.classList.add('visible'));
     }
 
-    // ── Skill bars ──
+    
     const skillSection = document.getElementById('about');
     if (skillSection && 'IntersectionObserver' in window) {
       const skillIO = new IntersectionObserver((entries) => {
@@ -629,7 +632,7 @@
       skillIO.observe(skillSection);
     }
 
-   
+    
     const nav = document.getElementById('nav');
     const onScroll = () => {
       if (!nav) return;
@@ -647,7 +650,7 @@
     };
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    // ── Mobile menu ──
+    
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobile-menu');
     if (burger && mobileMenu) {
@@ -683,10 +686,11 @@
       });
     });
 
-
+    
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  }); // end DOMContentLoaded</script>
+  });
+</script>
 </body>
 </html>
