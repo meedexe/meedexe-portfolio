@@ -1,676 +1,562 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MEEDEXE — Creative Developer & Digital Architect</title>
-  <meta name="description" content="Creative Developer | Digital Architect | Code with Purpose" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    :root { color-scheme: dark; }
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { overflow-x: hidden; font-family: 'Inter', system-ui, sans-serif; background: #020817; color: #e2e8f0; }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MEEDEXE — Creative Developer & Digital Architect</title>
 
-    .bg-scene { position: fixed; inset: 0; z-index: -1; overflow: hidden;
-      background: radial-gradient(ellipse 120% 80% at 10% 0%, rgba(59,130,246,.18) 0%, transparent 60%),
-                  radial-gradient(ellipse 80% 60% at 90% 20%, rgba(34,211,238,.12) 0%, transparent 55%),
-                  radial-gradient(ellipse 100% 80% at 50% 100%, rgba(168,85,247,.10) 0%, transparent 65%), #020817; }
-    .bg-grid { position: absolute; inset: 0;
-      background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size: 60px 60px; }
-    .blob { position: absolute; border-radius: 9999px; filter: blur(80px); opacity: .25; mix-blend-mode: screen; animation: drift ease-in-out infinite; }
-    .b1{width:min(700px,90vw);height:min(700px,90vw);left:-10%;top:-10%;background:rgba(59,130,246,.3);animation-duration:30s;}
-    .b2{width:min(600px,80vw);height:min(600px,80vw);right:-5%;top:30%;background:rgba(34,211,238,.2);animation-duration:36s;animation-delay:-10s;}
-    .b3{width:min(700px,90vw);height:min(700px,90vw);left:10%;bottom:-15%;background:rgba(168,85,247,.18);animation-duration:42s;animation-delay:-20s;}
-    @keyframes drift { 0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(30px,-25px) scale(1.08);}66%{transform:translate(-25px,30px) scale(.94);} }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Creative Developer | Digital Architect | Code with Purpose" />
 
-    .font-mono { font-family: 'JetBrains Mono', monospace; }
-    .gradient-text { background: linear-gradient(135deg,#fff 0%,#94a3b8 100%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    <style>
+      :root { color-scheme: dark; }
+      html, body { height: 100%; scroll-behavior: smooth; }
+      body { overflow-x: hidden; font-family: 'Inter', system-ui, -apple-system, sans-serif; }
 
-    .glass { background: rgba(15,23,42,.6); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,.06); }
-    .glass-hover { transition: all .3s ease; }
-    @media(hover:hover){ .glass-hover:hover { background: rgba(15,23,42,.8); border-color: rgba(255,255,255,.1); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(59,130,246,.1); } }
+      .bg-grid {
+        background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.05) 1px, transparent 0);
+        background-size: 32px 32px;
+      }
+      .glass {
+        background: rgba(255,255,255,0.02);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255,255,255,0.06);
+      }
+      .glass-card {
+        background: linear-gradient(145deg, rgba(30,41,59,0.4), rgba(15,23,42,0.4));
+        border: 1px solid rgba(255,255,255,0.05);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      }
+      .shadow-glow {
+        box-shadow: 0 0 0 1px rgba(59,130,246,.1), 0 20px 50px rgba(0,0,0,.5);
+      }
 
-    .nav-link { position:relative; font-size:.875rem; font-weight:500; color:#64748b; transition:color .2s; }
-    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; right:0; height:1px; background:#3b82f6; transform:scaleX(0); transition:transform .2s; transform-origin:left; }
-    .nav-link:hover { color:#fff; }
-    .nav-link:hover::after { transform:scaleX(1); }
+      .bg-vignette {
+        background: 
+          radial-gradient(1200px 700px at 15% 10%, rgba(59,130,246,.12), transparent 60%),
+          radial-gradient(900px 600px at 85% 30%, rgba(34,211,238,.08), transparent 60%),
+          linear-gradient(180deg, #020617 0%, #0f172a 100%);
+      }
 
-    .reveal { opacity:0; transform:translateY(24px); transition:opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1); }
-    .reveal.visible { opacity:1; transform:translateY(0); }
-    @keyframes forceShow { to { opacity:1; transform:none; } }
-    .reveal { animation: forceShow 0s 3s forwards; }
-    .reveal.visible { animation: none; }
-    .delay-1{transition-delay:.08s;} .delay-2{transition-delay:.16s;} .delay-3{transition-delay:.24s;} .delay-4{transition-delay:.32s;}
+      .blob {
+        position: absolute;
+        border-radius: 9999px;
+        filter: blur(80px);
+        opacity: 0.5;
+        animation: floaty 20s ease-in-out infinite;
+        will-change: transform;
+      }
+      .blob.b1 { width: 500px; height: 500px; left: -10%; top: -10%; background: rgba(59,130,246,0.15); }
+      .blob.b2 { width: 400px; height: 400px; right: -5%; top: 40%; background: rgba(34,211,238,0.1); animation-delay: -5s; }
 
-    .ascii-wrap { overflow-x: hidden; max-width: 100%; }
-    .ascii { font-family:'JetBrains Mono',monospace; font-weight:700; line-height:1.15;
-      font-size:clamp(.32rem, 2.4vw, 1rem);
-      background:linear-gradient(90deg,#3b82f6,#22d3ee,#fff,#22d3ee,#3b82f6); background-size:300% auto;
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-      animation:sweep 5s linear infinite;
-      display:block; white-space:pre; }
-    @media(max-width:480px){ .ascii { font-size: clamp(.22rem, 2.8vw, .5rem); } }
-    @keyframes sweep { to{background-position:300% center;} }
+      @keyframes floaty {
+        0%, 100% { transform: translate(0,0) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+      }
 
-    .token-k{color:#c792ea;} .token-c{color:#ffcb6b;} .token-s{color:#c3e88d;} .token-p{color:#e06c75;} .token-punc{color:#89ddff;} .token-num{color:#f78c6c;}
+      /* UPDATED: ASCII Styling with Light Sweep Animation */
+      .ascii-container {
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 900;
+        line-height: 1.1;
+        display: inline-block;
+        /* Triple-layered gradient for the "moving light" effect */
+        background: linear-gradient(
+          to right, 
+          #3b82f6 0%, 
+          #22d3ee 25%, 
+          #ffffff 50%, 
+          #22d3ee 75%, 
+          #3b82f6 100%
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        font-size: clamp(0.45rem, 1.5vw, 1.2rem);
+        text-align: left;
+        animation: lightSweep 4s linear infinite;
+      }
 
-    .code-pre { font-family:'JetBrains Mono',monospace; font-size:.8rem; line-height:1.7; overflow-x:auto; }
-    @media(max-width:480px){ .code-pre { font-size:.72rem; } }
+      @keyframes lightSweep {
+        0% { background-position: 200% center; filter: drop-shadow(0 0 10px rgba(59,130,246,0.2)); }
+        50% { filter: drop-shadow(0 0 20px rgba(34,211,238,0.5)); }
+        100% { background-position: 0% center; filter: drop-shadow(0 0 10px rgba(59,130,246,0.2)); }
+      }
 
-    .skill-bar { height:3px; background:rgba(255,255,255,.06); border-radius:9999px; overflow:hidden; }
-    .skill-fill { height:100%; border-radius:9999px; background:linear-gradient(90deg,#3b82f6,#22d3ee); width:0; transition:width 1.2s cubic-bezier(.22,1,.36,1); }
+      .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+      .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-    ::-webkit-scrollbar{width:6px;} ::-webkit-scrollbar-track{background:#020817;} ::-webkit-scrollbar-thumb{background:#1e293b;border-radius:9999px;}
+      /* Syntax Highlighting */
+      .code-block { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      .token-keyword { color: #c678dd; }
+      .token-const { color: #e5c07b; }
+      .token-string { color: #98c379; }
+      .token-prop { color: #e06c75; }
+      .token-punct { color: #abb2bf; }
 
-    .section-label { font-size:.7rem; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:#3b82f6; }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: #020617; }
+      ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+    </style>
+  </head>
 
-    .btn-primary { background:linear-gradient(135deg,#2563eb,#1d4ed8); box-shadow:0 0 0 1px rgba(59,130,246,.3),inset 0 1px 0 rgba(255,255,255,.1); transition:all .2s; }
-    .btn-primary:active { transform:scale(.97); }
-    @media(hover:hover){ .btn-primary:hover { background:linear-gradient(135deg,#3b82f6,#2563eb); box-shadow:0 0 0 1px rgba(59,130,246,.5),0 10px 30px rgba(59,130,246,.3); transform:translateY(-1px); } }
-    .btn-ghost { border:1px solid rgba(255,255,255,.1); background:rgba(255,255,255,.04); transition:all .2s; }
-    .btn-ghost:active { transform:scale(.97); }
-    @media(hover:hover){ .btn-ghost:hover { background:rgba(255,255,255,.08); border-color:rgba(255,255,255,.2); transform:translateY(-1px); } }
+  <body class="bg-slate-950 text-slate-100 selection:bg-blue-500/30">
+    <div class="fixed inset-0 -z-10 bg-vignette">
+      <div class="absolute inset-0 bg-grid"></div>
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+    </div>
 
-    @media(max-width:480px){
-      .btn-block-mobile { width:100%; justify-content:center; }
-    }
-
-    .tag { display:inline-flex; align-items:center; border-radius:9999px; padding:.25rem .7rem; font-size:.72rem; font-weight:500; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.04); color:#94a3b8; transition:all .2s; }
-
-    .badge-new { animation:glowGreen 2s ease-in-out infinite; }
-    @keyframes glowGreen { 0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.4);}50%{box-shadow:0 0 0 6px rgba(34,197,94,0);} }
-    .badge-perf { animation:glowBlue 2.5s ease-in-out infinite; }
-    @keyframes glowBlue { 0%,100%{box-shadow:0 0 0 0 rgba(59,130,246,.4);}50%{box-shadow:0 0 0 5px rgba(59,130,246,0);} }
-
-    @media(max-width:640px){
-      .stats-row { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; }
-      .stats-row > div { border-left:none !important; padding-left:0 !important; background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); border-radius:.75rem; padding:.75rem; text-align:center; }
-    }
-
-    @media(max-width:768px){
-      .hero-section { min-height:auto; padding-top:5rem; padding-bottom:3rem; }
-    }
-
-    @media(max-width:1024px){
-      .glass-hover:hover { transform:none; }
-    }
-
-    #mobile-menu { display:none; }
-    #mobile-menu.open { display:flex; }
-  </style>
-</head>
-<body>
-
-<div class="bg-scene">
-  <div class="bg-grid"></div>
-  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
-</div>
-
-<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6">
-    <nav class="flex items-center justify-between h-16">
-      <a href="#top" class="flex items-center gap-3 group">
-        <div class="h-9 w-9 rounded-xl overflow-hidden ring-1 ring-white/10 group-hover:ring-blue-500/50 transition-all">
-          <img src="https://i.ibb.co/JwytwC47/92868863.jpg" alt="MEEDEXE" class="h-full w-full object-cover">
-        </div>
-        <span class="font-bold tracking-tight text-white">MEEDEXE</span>
-        <span class="hidden sm:block text-xs text-slate-600 font-mono">v2.0</span>
-      </a>
-      <div class="hidden md:flex items-center gap-8">
-        <a href="#about" class="nav-link">About</a>
-        <a href="#expertise" class="nav-link">Skills</a>
-        <a href="#stack" class="nav-link">Stack</a>
-        <a href="#work" class="nav-link">Projects</a>
-        <a href="#contact" class="nav-link">Contact</a>
-      </div>
-      <div class="flex items-center gap-3">
-        <a href="#contact" class="btn-primary hidden sm:flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold text-white">
-          <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span></span>
-          Hire Me
+    <header class="sticky top-0 z-50 border-b border-white/5 bg-slate-950/80 backdrop-blur-xl">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+        <a href="#top" class="group flex items-center gap-3">
+          <div class="relative h-10 w-10 overflow-hidden rounded-xl ring-1 ring-white/20 transition-transform group-hover:scale-110">
+            <img src="92868863.jpeg" alt="MEEDEXE" class="h-full w-full object-cover" />
+          </div>
+          <span class="text-lg font-bold tracking-tighter">MEEDEXE</span>
         </a>
-        <button id="burger" class="md:hidden p-2 flex flex-col gap-1.5" aria-label="Menu">
-          <span class="w-5 h-px bg-slate-400"></span><span class="w-5 h-px bg-slate-400"></span><span class="w-3 h-px bg-slate-400"></span>
-        </button>
-      </div>
-    </nav>
-  </div>
-  <div id="mobile-menu" class="glass flex-col gap-1 px-6 py-4 md:hidden">
-    <a href="#about" class="py-2 text-sm text-slate-300 hover:text-white border-b border-white/5">About</a>
-    <a href="#expertise" class="py-2 text-sm text-slate-300 hover:text-white border-b border-white/5">Skills</a>
-    <a href="#stack" class="py-2 text-sm text-slate-300 hover:text-white border-b border-white/5">Stack</a>
-    <a href="#work" class="py-2 text-sm text-slate-300 hover:text-white border-b border-white/5">Projects</a>
-    <a href="#contact" class="py-2 text-sm text-slate-300 hover:text-white">Contact</a>
-  </div>
-</header>
-
-<main id="top">
-
-<section class="hero-section min-h-screen flex flex-col justify-center pt-20 pb-12 sm:pb-20">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 w-full">
-    <div class="grid lg:grid-cols-[1.15fr_1fr] gap-10 lg:gap-16 items-center">
-      <div>
-        <div class="reveal flex flex-wrap gap-2 mb-8">
-          <span class="flex items-center gap-2 rounded-full border border-emerald-500/25 bg-emerald-500/8 px-3 py-1 text-xs font-medium text-emerald-300">
-            <span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span></span>
-            Available for work
-          </span>
-          <span class="flex items-center gap-2 rounded-full border border-blue-500/25 bg-blue-500/8 px-3 py-1 text-xs font-medium text-blue-300">🇲🇦 Morocco</span>
-          <span class="flex items-center gap-2 rounded-full border border-purple-500/25 bg-purple-500/8 px-3 py-1 text-xs font-medium text-purple-300">🌐 Remote-ready</span>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#about" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">About</a>
+          <a href="#expertise" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Expertise</a>
+          <a href="#stack" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Tech Stack</a>
+          <a href="#work" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Projects</a>
         </div>
-        <div class="reveal delay-1 mb-6 ascii-wrap">
-          <pre class="ascii">
+        <a href="#contact" class="rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition-all hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]">Hire Me</a>
+      </nav>
+    </header>
+
+    <main id="top" class="mx-auto max-w-7xl px-6">
+      
+      <section class="flex min-h-[85vh] flex-col justify-center py-20">
+        <div class="grid items-center gap-16 lg:grid-cols-[1.2fr_1fr]">
+          <div class="reveal">
+            <div class="flex flex-wrap items-center gap-3 mb-8">
+              <div class="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-300">
+                <span class="relative flex h-2 w-2">
+                  <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                  <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+                </span>
+                Available for Projects
+              </div>
+              <div class="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-300">
+                🇲🇦 Based in Morocco
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <pre class="ascii-container">
 ███╗   ███╗███████╗███████╗██████╗ ███████╗██╗  ██╗███████╗
 ████╗ ████║██╔════╝██╔════╝██╔══██╗██╔════╝╚██╗██╔╝██╔════╝
 ██╔████╔██║█████╗  █████╗  ██║  ██║█████╗   ╚███╔╝ █████╗  
 ██║╚██╔╝██║██╔══╝  ██╔══╝  ██║  ██║██╔══╝   ██╔██╗ ██╔══╝  
 ██║ ╚═╝ ██║███████╗███████╗██████╔╝███████╗██╔╝ ██╗███████╗
 ╚═╝     ╚═╝╚══════╝╚══════╝╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝</pre>
-        </div>
-        <h1 class="reveal delay-1 text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1]">
-          Creative Developer<br>
-          <span style="background:linear-gradient(135deg,#64748b,#475569);-webkit-background-clip:text;background-clip:text;color:transparent;">& Digital Architect.</span>
-        </h1>
-        <p class="reveal delay-2 mt-5 text-base sm:text-lg text-slate-400 leading-relaxed max-w-lg">
-          Crafting exceptional digital experiences at the intersection of <span class="text-slate-200">design</span>, <span class="text-slate-200">engineering</span>, and <span class="text-slate-200">strategy</span>. Code isn't just logic — it's the DNA of ideas.
-        </p>
-        <div class="reveal delay-3 mt-8 flex flex-wrap gap-3">
-          <a href="#work" class="btn-primary btn-block-mobile rounded-xl px-7 py-3 font-semibold text-white text-sm">View Projects</a>
-          <a href="https://github.com/MEEDEXE" target="_blank" class="btn-ghost btn-block-mobile rounded-xl px-7 py-3 font-semibold text-slate-200 text-sm flex items-center gap-2">
-            <svg class="h-4 w-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-            GitHub
-          </a>
-          <a href="#contact" class="btn-ghost btn-block-mobile rounded-xl px-7 py-3 font-semibold text-slate-200 text-sm">Contact →</a>
-        </div>
-        <div class="reveal delay-4 mt-10 stats-row flex flex-wrap gap-6 pt-8 border-t border-white/5">
-          <div><div class="text-2xl font-bold text-white">7+</div><div class="text-xs text-slate-500 mt-0.5">Live Projects</div></div>
-          <div class="border-l border-white/5 pl-6"><div class="text-2xl font-bold text-white">100%</div><div class="text-xs text-slate-500 mt-0.5">PageSpeed</div></div>
-          <div class="border-l border-white/5 pl-6"><div class="text-2xl font-bold text-white">4+</div><div class="text-xs text-slate-500 mt-0.5">Languages</div></div>
-          <div class="border-l border-white/5 pl-6"><div class="text-2xl font-bold text-white">∞</div><div class="text-xs text-slate-500 mt-0.5">Coffee cups</div></div>
-        </div>
-      </div>
-
-      <div class="reveal delay-2 hidden sm:block">
-        <div class="glass rounded-3xl p-1" style="box-shadow:0 0 0 1px rgba(59,130,246,.1),0 40px 80px rgba(0,0,0,.5)">
-          <div class="bg-slate-900/80 rounded-[calc(1.5rem-4px)] p-5 border border-white/5">
-            <div class="flex items-center gap-2 mb-5 pb-4 border-b border-white/5">
-              <div class="h-3 w-3 rounded-full bg-red-500/80"></div>
-              <div class="h-3 w-3 rounded-full bg-yellow-500/80"></div>
-              <div class="h-3 w-3 rounded-full bg-emerald-500/80"></div>
-              <span class="ml-3 text-xs font-mono text-slate-500 truncate">~/meedexe/identity.ts</span>
-              <span class="ml-auto text-xs font-mono text-emerald-400 shrink-0">● saved</span>
             </div>
-            <pre class="code-pre"><span class="token-k">const</span> <span class="token-c">meedexe</span> <span class="token-punc">=</span> <span class="token-punc">{</span>
-  <span class="token-p">name</span><span class="token-punc">:</span>       <span class="token-s">"MEEDEXE"</span><span class="token-punc">,</span>
-  <span class="token-p">role</span><span class="token-punc">:</span>       <span class="token-s">"Creative Dev & Architect"</span><span class="token-punc">,</span>
-  <span class="token-p">location</span><span class="token-punc">:</span>   <span class="token-s">"Morocco 🇲🇦"</span><span class="token-punc">,</span>
-  <span class="token-p">principles</span><span class="token-punc">:</span> <span class="token-punc">[</span>
-    <span class="token-s">"Performance is a feature"</span><span class="token-punc">,</span>
-    <span class="token-s">"Design and function are one"</span><span class="token-punc">,</span>
-    <span class="token-s">"Security is not optional"</span><span class="token-punc">,</span>
-    <span class="token-s">"UX drives everything"</span><span class="token-punc">,</span>
-  <span class="token-punc">],</span>
-  <span class="token-p">stack</span><span class="token-punc">:</span>  <span class="token-s">"React · Next.js · Node · Go"</span><span class="token-punc">,</span>
-  <span class="token-p">available</span><span class="token-punc">:</span> <span class="token-num">true</span><span class="token-punc">,</span>
-  <span class="token-p">goal</span><span class="token-punc">:</span>   <span class="token-s">"Build products that matter"</span><span class="token-punc">,</span>
-<span class="token-punc">};</span>
 
-<span class="token-k">export default</span> meedexe<span class="token-punc">;</span></pre>
-          </div>
-        </div>
-        <div class="mt-4 flex justify-end">
-          <span class="badge-perf inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1.5 text-xs font-semibold text-blue-300">
-            ⚡ 100% Google PageSpeed on every delivery
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+            <h1 class="text-3xl font-bold tracking-tight text-white sm:text-5xl leading-tight">
+              Creative Developer <br/>
+              <span class="text-slate-400">& Digital Architect.</span>
+            </h1>
+            
+            <p class="mt-6 max-w-xl text-lg leading-relaxed text-slate-400">
+              Crafting exceptional digital experiences at the intersection of design, engineering, and strategy. 
+              Code isn't just logic—it's the digital DNA of ideas.
+            </p>
 
-<section id="about" class="py-16 sm:py-24 border-t border-white/5">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6">
-    <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-      <div class="reveal">
-        <p class="section-label mb-3">Who I am</p>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight gradient-text mb-6">Engineer by logic,<br>designer by heart.</h2>
-        <p class="text-slate-400 leading-relaxed mb-4">I'm a full-stack developer & digital strategist based in Morocco, building high-performance web solutions for businesses, artists, and organizations across Morocco, Spain, France, and beyond.</p>
-        <p class="text-slate-400 leading-relaxed mb-8">Every project I ship is obsessively crafted — from pixel-perfect UI to bulletproof backend architecture. My work lives at the intersection of design thinking, clean code, and measurable results.</p>
-        <div class="flex flex-wrap gap-3">
-          <span class="tag">🎯 Problem solver</span><span class="tag">🚀 Performance-first</span><span class="tag">🌍 Multilingual</span><span class="tag">🔐 Security-aware</span><span class="tag">🎨 Design-driven</span>
-        </div>
-      </div>
-      <div class="reveal delay-2 space-y-4">
-        <p class="section-label mb-5">Core competencies</p>
-        <div>
-          <div class="flex justify-between text-sm mb-1.5"><span class="text-slate-200 font-medium">Frontend Development</span><span class="text-blue-400 font-semibold">95%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
-        </div>
-        <div>
-          <div class="flex justify-between text-sm mb-1.5"><span class="text-slate-200 font-medium">UI/UX & Branding</span><span class="text-blue-400 font-semibold">90%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-        </div>
-        <div>
-          <div class="flex justify-between text-sm mb-1.5"><span class="text-slate-200 font-medium">SEO & Performance</span><span class="text-blue-400 font-semibold">98%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="98"></div></div>
-        </div>
-        <div>
-          <div class="flex justify-between text-sm mb-1.5"><span class="text-slate-200 font-medium">Backend & APIs</span><span class="text-blue-400 font-semibold">82%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="82"></div></div>
-        </div>
-        <div>
-          <div class="flex justify-between text-sm mb-1.5"><span class="text-slate-200 font-medium">Cybersecurity</span><span class="text-blue-400 font-semibold">75%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="75"></div></div>
-        </div>
-        <div>
-          <div class="flex justify-between text-sm mb-1.5"><span class="text-slate-200 font-medium">DevOps & Cloud</span><span class="text-blue-400 font-semibold">70%</span></div>
-          <div class="skill-bar"><div class="skill-fill" data-width="70"></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="expertise" class="py-16 sm:py-24 border-t border-white/5">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6">
-    <div class="reveal text-center mb-16">
-      <p class="section-label mb-3">Services</p>
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight gradient-text">What I Build</h2>
-      <p class="mt-3 text-slate-400 max-w-xl mx-auto">Transforming complex problems into elegant, scalable digital solutions.</p>
-    </div>
-    <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      <div class="reveal glass glass-hover rounded-2xl p-7">
-        <div class="mb-5 h-11 w-11 rounded-xl bg-blue-500/15 flex items-center justify-center text-xl border border-blue-500/20">🌐</div>
-        <h3 class="font-bold text-lg mb-2">Web & Mobile Apps</h3>
-        <p class="text-sm text-slate-400 mb-5 leading-relaxed">Full-stack development with modern frameworks, performance optimization, and seamless user experiences.</p>
-        <div class="space-y-1.5 text-sm">
-          <div class="flex items-center gap-2 text-slate-300"><span class="text-blue-400 text-xs">▹</span> React, Next.js, TypeScript, Tailwind</div>
-          <div class="flex items-center gap-2 text-slate-300"><span class="text-blue-400 text-xs">▹</span> Progressive Web Apps (PWA)</div>
-          <div class="flex items-center gap-2 text-slate-300"><span class="text-blue-400 text-xs">▹</span> SSR, SSG & Edge rendering</div>
-        </div>
-      </div>
-      <div class="reveal delay-1 glass glass-hover rounded-2xl p-7">
-        <div class="mb-5 h-11 w-11 rounded-xl bg-emerald-500/15 flex items-center justify-center text-xl border border-emerald-500/20">⚙️</div>
-        <h3 class="font-bold text-lg mb-2">Backend & APIs</h3>
-        <p class="text-sm text-slate-400 mb-5 leading-relaxed">Scalable, secure server solutions architected for reliability, speed, and maintainability.</p>
-        <div class="space-y-1.5 text-sm">
-          <div class="flex items-center gap-2 text-slate-300"><span class="text-emerald-400 text-xs">▹</span> Node.js, Go, Python</div>
-          <div class="flex items-center gap-2 text-slate-300"><span class="text-emerald-400 text-xs">▹</span> RESTful & GraphQL APIs</div>
-          <div class="flex items-center gap-2 text-slate-300"><span class="text-emerald-400 text-xs">▹</span> Microservices Architecture</div>
-        </div>
-      </div>
-      <div class="reveal delay-2 glass glass-hover rounded-2xl p-7">
-        <div class="mb-5 h-11 w-11 rounded-xl bg-red-500/15 flex items-center justify-center text-xl border border-red-500/20">🔐</div>
-        <h3 class="font-bold text-lg mb-2">Cybersecurity</h3>
-        <p class="text-sm text-slate-400 mb-5 leading-relaxed">Ethical hacking, penetration testing, and security hardening to protect what matters.</p>
-        <div class="space-y-1.5 text-sm">
-          <div class="flex items-center gap-2 text-slate-300"><span class="text-red-400 text-xs">▹</span> Web App Security Audits</div>
-          <div class="flex items-center gap-2 text-slate-300"><span class="text-red-400 text-xs">▹</span> Network Reconnaissance</div>
-          <div class="flex items-center gap-2 text-slate-300"><span class="text-red-400 text-xs">▹</span> Vulnerability Assessment</div>
-        </div>
-      </div>
-      <div class="reveal glass glass-hover rounded-2xl p-7">
-        <div class="mb-5 h-11 w-11 rounded-xl bg-purple-500/15 flex items-center justify-center text-xl border border-purple-500/20">🎨</div>
-        <h3 class="font-bold text-lg mb-2">Creative Tech</h3>
-        <p class="text-sm text-slate-400 mb-5 leading-relaxed">Where engineering meets art — interactive experiences, generative visuals, and brand systems.</p>
-        <div class="space-y-1.5 text-sm">
-          <div class="flex items-center gap-2 text-slate-300"><span class="text-purple-400 text-xs">▹</span> Interactive Web Experiences</div>
-          <div class="flex items-center gap-2 text-slate-300"><span class="text-purple-400 text-xs">▹</span> Generative Art & Creative Coding</div>
-          <div class="flex items-center gap-2 text-slate-300"><span class="text-purple-400 text-xs">▹</span> Audio-Reactive Interfaces</div>
-        </div>
-      </div>
-      <div class="reveal delay-1 glass glass-hover rounded-2xl p-7 md:col-span-2">
-        <div class="flex flex-col sm:flex-row gap-6 items-start">
-          <div class="h-11 w-11 shrink-0 rounded-xl bg-amber-500/15 flex items-center justify-center text-xl border border-amber-500/20">🏨</div>
-          <div class="flex-1">
-            <h3 class="font-bold text-lg mb-2">Hospitality & Business Tech</h3>
-            <p class="text-sm text-slate-400 mb-5 leading-relaxed">Modernizing Moroccan and international businesses with full digital solutions — booking systems to multilingual brand sites.</p>
-            <div class="grid sm:grid-cols-2 gap-y-2 gap-x-6 text-sm">
-              <div class="flex items-center gap-2 text-slate-300"><span class="text-amber-400 text-xs">▹</span> Restaurant & Hotel Booking</div>
-              <div class="flex items-center gap-2 text-slate-300"><span class="text-amber-400 text-xs">▹</span> Digital Menus & QR Systems</div>
-              <div class="flex items-center gap-2 text-slate-300"><span class="text-amber-400 text-xs">▹</span> Multilingual (AR·FR·ES·EN)</div>
-              <div class="flex items-center gap-2 text-slate-300"><span class="text-amber-400 text-xs">▹</span> Payment Gateways Integration</div>
+            <div class="mt-10 flex flex-wrap gap-4">
+              <a href="#expertise" class="rounded-xl bg-slate-100 px-6 py-3 font-semibold text-slate-900 transition-all hover:bg-white">Explore My Work</a>
+              <a href="https://github.com/MEEDEXE" target="_blank" class="group flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-6 py-3 font-semibold transition-all hover:bg-white/10">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                <span>GitHub</span>
+              </a>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="stack" class="py-16 sm:py-24 border-t border-white/5">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6">
-    <div class="reveal text-center mb-16">
-      <p class="section-label mb-3">Technologies</p>
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight gradient-text">Tech Arsenal</h2>
-      <p class="mt-3 text-slate-400">The tools I use to build robust, performant digital products.</p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="reveal glass rounded-2xl p-6">
-        <p class="section-label mb-5">Frontend</p>
-        <div class="flex flex-wrap gap-2">
-          <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React" class="h-6">
-          <img src="https://img.shields.io/badge/Next.js-000?style=flat-square&logo=next.js&logoColor=white" alt="Next.js" class="h-6">
-          <img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" class="h-6">
-          <img src="https://img.shields.io/badge/Tailwind-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind" class="h-6">
-          <img src="https://img.shields.io/badge/Framer-0055FF?style=flat-square&logo=framer&logoColor=white" alt="Framer" class="h-6">
-          <img src="https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white" alt="Vite" class="h-6">
+          <div class="tilt-scene reveal relative">
+            <div class="glass shadow-glow relative rounded-[2rem] p-6 lg:p-8 transition-transform z-10" data-tilt>
+              <div class="rounded-xl bg-[#0d1117] p-4 border border-white/10 font-mono text-sm shadow-inner">
+                <div class="flex gap-2 mb-4 border-b border-white/5 pb-3">
+                  <div class="h-3 w-3 rounded-full bg-red-500"></div>
+                  <div class="h-3 w-3 rounded-full bg-yellow-500"></div>
+                  <div class="h-3 w-3 rounded-full bg-green-500"></div>
+                  <span class="ml-2 text-xs text-slate-500 font-sans">meedexe.js</span>
+                </div>
+                <div class="code-block leading-relaxed overflow-x-auto">
+<span class="token-keyword">const</span> <span class="token-const">meedexe</span> <span class="token-punct">=</span> <span class="token-punct">{</span>
+  <span class="token-prop">principles</span><span class="token-punct">:</span> <span class="token-punct">[</span>
+    <span class="token-string">"Clean code is readable code"</span><span class="token-punct">,</span>
+    <span class="token-string">"Performance is a feature"</span><span class="token-punct">,</span>
+    <span class="token-string">"Design and function are inseparable"</span><span class="token-punct">,</span>
+    <span class="token-string">"Security is not optional"</span><span class="token-punct">,</span>
+    <span class="token-string">"User experience drives everything"</span>
+  <span class="token-punct">],</span>
+  <span class="token-prop">approach</span><span class="token-punct">:</span> <span class="token-string">"Strategic • Methodical • Creative"</span><span class="token-punct">,</span>
+  <span class="token-prop">goal</span><span class="token-punct">:</span> <span class="token-string">"Build products that matter"</span>
+<span class="token-punct">};</span>
+                </div>
+              </div>
+            </div>
+            <div class="absolute inset-0 bg-blue-500/20 blur-[100px] -z-10 rounded-full"></div>
+          </div>
         </div>
-      </div>
-      <div class="reveal delay-1 glass rounded-2xl p-6">
-        <p class="section-label mb-5">Backend</p>
-        <div class="flex flex-wrap gap-2">
-          <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white" alt="Node.js" class="h-6">
-          <img src="https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white" alt="Go" class="h-6">
-          <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" class="h-6">
-          <img src="https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white" alt="PostgreSQL" class="h-6">
-          <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white" alt="MongoDB" class="h-6">
-          <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black" alt="Firebase" class="h-6">
-        </div>
-      </div>
-      <div class="reveal delay-2 glass rounded-2xl p-6">
-        <p class="section-label mb-5">DevOps & Tools</p>
-        <div class="flex flex-wrap gap-2">
-          <img src="https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black" alt="Linux" class="h-6">
-          <img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" alt="Docker" class="h-6">
-          <img src="https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white" alt="Git" class="h-6">
-          <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white" alt="GitHub" class="h-6">
-          <img src="https://img.shields.io/badge/VS_Code-007ACC?style=flat-square&logo=visual-studio-code&logoColor=white" alt="VS Code" class="h-6">
-          <img src="https://img.shields.io/badge/Vercel-000?style=flat-square&logo=vercel&logoColor=white" alt="Vercel" class="h-6">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-<section id="work" class="py-16 sm:py-24 border-t border-white/5">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6">
-    <div class="reveal mb-16">
-      <p class="section-label mb-3">Portfolio</p>
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-        <div>
-          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight gradient-text">Featured Projects</h2>
+      <hr class="border-white/5 reveal" />
+
+      <section id="expertise" class="py-24">
+        <div class="reveal mb-12 text-center md:text-left">
+          <h2 class="text-3xl font-bold">🚀 What I Build</h2>
+          <p class="mt-2 text-slate-400">Transforming problems into scalable digital solutions.</p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          
+          <div class="glass-card rounded-3xl p-8 reveal hover:-translate-y-1 transition-transform">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-500/20 text-2xl">🌐</div>
+            <h3 class="text-xl font-bold mb-3">Web & Mobile Apps</h3>
+            <p class="text-sm text-slate-400 mb-4">Full-stack development with modern frameworks and performance optimization.</p>
+            <ul class="text-sm text-slate-300 space-y-2">
+              <li class="flex items-center gap-2"><span class="text-blue-400">▹</span> React, Next.js, Tailwind, TS</li>
+              <li class="flex items-center gap-2"><span class="text-blue-400">▹</span> Progressive Web Apps (PWAs)</li>
+              <li class="flex items-center gap-2"><span class="text-blue-400">▹</span> SSR & Static Site Generation</li>
+            </ul>
+          </div>
+
+          <div class="glass-card rounded-3xl p-8 reveal hover:-translate-y-1 transition-transform">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/20 text-2xl">⚙️</div>
+            <h3 class="text-xl font-bold mb-3">Backend & API</h3>
+            <p class="text-sm text-slate-400 mb-4">Scalable, secure server solutions built for reliability and speed.</p>
+            <ul class="text-sm text-slate-300 space-y-2">
+              <li class="flex items-center gap-2"><span class="text-emerald-400">▹</span> Node.js, Go, Python</li>
+              <li class="flex items-center gap-2"><span class="text-emerald-400">▹</span> RESTful & GraphQL APIs</li>
+              <li class="flex items-center gap-2"><span class="text-emerald-400">▹</span> Microservices Architecture</li>
+            </ul>
+          </div>
+
+          <div class="glass-card rounded-3xl p-8 reveal hover:-translate-y-1 transition-transform">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-red-500/20 text-2xl">🔐</div>
+            <h3 class="text-xl font-bold mb-3">Cybersecurity</h3>
+            <p class="text-sm text-slate-400 mb-4">Ethical hacking, penetration testing, and intelligence gathering.</p>
+            <ul class="text-sm text-slate-300 space-y-2">
+              <li class="flex items-center gap-2"><span class="text-red-400">▹</span> Web App Security Audits</li>
+              <li class="flex items-center gap-2"><span class="text-red-400">▹</span> Network Reconnaissance</li>
+              <li class="flex items-center gap-2"><span class="text-red-400">▹</span> Vulnerability Assessment</li>
+            </ul>
+          </div>
+
+          <div class="glass-card rounded-3xl p-8 reveal hover:-translate-y-1 transition-transform">
+            <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-500/20 text-2xl">🎨</div>
+            <h3 class="text-xl font-bold mb-3">Creative Tech</h3>
+            <p class="text-sm text-slate-400 mb-4">Where art meets engineering for unique brand experiences.</p>
+            <ul class="text-sm text-slate-300 space-y-2">
+              <li class="flex items-center gap-2"><span class="text-purple-400">▹</span> Interactive Web Experiences</li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">▹</span> Generative Art & Creative Coding</li>
+              <li class="flex items-center gap-2"><span class="text-purple-400">▹</span> Audio-Reactive Interfaces</li>
+            </ul>
+          </div>
+
+          <div class="glass-card md:col-span-2 lg:col-span-2 rounded-3xl p-8 reveal hover:-translate-y-1 transition-transform">
+            <div class="flex flex-col md:flex-row gap-6 items-start">
+              <div class="mb-4 inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-amber-500/20 text-2xl">🏨</div>
+              <div>
+                <h3 class="text-xl font-bold mb-3">Hospitality Tech Solutions</h3>
+                <p class="text-sm text-slate-400 mb-4">Modernizing local businesses in Morocco and beyond.</p>
+                <div class="grid md:grid-cols-2 gap-4 text-sm text-slate-300">
+                  <ul class="space-y-2">
+                    <li class="flex items-center gap-2"><span class="text-amber-400">▹</span> Hotel Booking Systems</li>
+                    <li class="flex items-center gap-2"><span class="text-amber-400">▹</span> Digital Menu Platforms</li>
+                  </ul>
+                  <ul class="space-y-2">
+                    <li class="flex items-center gap-2"><span class="text-amber-400">▹</span> Multilingual (AR, FR, EN)</li>
+                    <li class="flex items-center gap-2"><span class="text-amber-400">▹</span> Payment Gateways (Stripe, Local)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="stack" class="py-20 border-t border-white/5">
+        <div class="reveal mb-12 text-center md:text-left">
+          <h2 class="text-3xl font-bold">🛠 Tech Arsenal</h2>
+          <p class="mt-2 text-slate-400">The tools I use to build robust digital products.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="reveal">
+            <h3 class="text-sm uppercase tracking-widest text-slate-500 font-semibold mb-6 border-b border-white/10 pb-2">Frontend</h3>
+            <div class="flex flex-wrap gap-3">
+              <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React">
+              <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js">
+              <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
+              <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind">
+              <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" alt="Framer">
+            </div>
+          </div>
+
+          <div class="reveal delay-100">
+            <h3 class="text-sm uppercase tracking-widest text-slate-500 font-semibold mb-6 border-b border-white/10 pb-2">Backend</h3>
+            <div class="flex flex-wrap gap-3">
+              <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js">
+              <img src="https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white" alt="Go">
+              <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python">
+              <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL">
+              <img src="https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB">
+            </div>
+          </div>
+
+          <div class="reveal delay-200">
+            <h3 class="text-sm uppercase tracking-widest text-slate-500 font-semibold mb-6 border-b border-white/10 pb-2">DevOps & Tools</h3>
+            <div class="flex flex-wrap gap-3">
+              <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" alt="Linux">
+              <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker">
+              <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white" alt="Git">
+              <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub">
+              <img src="https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="VS Code">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="work" class="py-24 border-t border-white/5">
+        <div class="reveal mb-12">
+          <h2 class="text-3xl font-bold">🌍 Featured Projects</h2>
           <p class="mt-2 text-slate-400">Live sites and high-impact digital initiatives.</p>
         </div>
-        <a href="https://github.com/MEEDEXE" target="_blank" class="btn-ghost rounded-xl px-4 py-2 text-sm text-slate-300 flex items-center gap-2 self-start sm:self-auto">
-          <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-          All on GitHub
-        </a>
-      </div>
-    </div>
-    <div class="grid gap-4 sm:gap-5 md:grid-cols-2">
 
-      <!-- Triana -->
-      <a href="https://triana.ma/" target="_blank" class="group reveal glass glass-hover rounded-2xl p-8 relative overflow-hidden">
-        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/60 to-transparent"></div>
-        <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-blue-500/5 group-hover:bg-blue-500/10 transition-all blur-2xl"></div>
-        <div class="relative z-10">
-          <div class="flex items-start justify-between mb-4">
-            <div><span class="section-label">🏔️ Chefchaouen · Morocco 🇲🇦</span><h3 class="text-xl font-bold mt-1">Triana Restaurant</h3></div>
-            <span class="text-slate-500 group-hover:text-blue-400 transition-colors font-mono text-xs mt-1">triana.ma ↗</span>
-          </div>
-          <p class="text-slate-400 text-sm leading-relaxed mb-5">#1 Rooftop Restaurant Website in Morocco. High-performance multilingual platform with live table reservation, cinematic Mediterranean–Andalusian identity, and advanced SEO built for global travelers visiting the Blue City.</p>
-          <div class="grid grid-cols-3 gap-3 mb-5 p-4 rounded-xl bg-white/[.02] border border-white/5">
-            <div class="text-center"><div class="text-lg font-bold text-white">4</div><div class="text-xs text-slate-500">Languages</div></div>
-            <div class="text-center border-x border-white/5"><div class="text-lg font-bold text-white">100%</div><div class="text-xs text-slate-500">PageSpeed</div></div>
-            <div class="text-center"><div class="text-lg font-bold text-white">#1</div><div class="text-xs text-slate-500">SEO Rank</div></div>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tag">Next.js</span><span class="tag">Tailwind</span><span class="tag">i18n × 4</span><span class="tag">Reservation</span>
-            <span class="badge-perf inline-flex items-center gap-1 rounded-full border border-blue-500/35 bg-blue-500/10 px-3 py-1 text-xs font-bold text-blue-300">⚡ 100% Perf</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Bachir Zairi -->
-      <a href="https://bachirzairi.com/" target="_blank" class="group reveal delay-1 glass glass-hover rounded-2xl p-8 relative overflow-hidden">
-        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-purple-500/60 to-transparent"></div>
-        <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-purple-500/5 group-hover:bg-purple-500/10 transition-all blur-2xl"></div>
-        <div class="relative z-10">
-          <div class="flex items-start justify-between mb-4">
-            <div><span class="section-label text-purple-400">🎵 Artist · Morocco 🇲🇦</span><h3 class="text-xl font-bold mt-1">Bachir Zairi</h3></div>
-            <span class="text-slate-500 group-hover:text-purple-400 transition-colors font-mono text-xs mt-1">bachirzairi.com ↗</span>
-          </div>
-          <p class="text-slate-400 text-sm leading-relaxed mb-5">Dark, bold, cinematic. A professional artist identity for a Moroccan music producer & songwriter — built for beat sales, artist branding, and international reach. Every pixel reflects the trap & Andalusian soul.</p>
-          <div class="grid grid-cols-3 gap-3 mb-5 p-4 rounded-xl bg-white/[.02] border border-white/5">
-            <div class="text-center"><div class="text-lg font-bold text-white">9.2</div><div class="text-xs text-slate-500">Design Score</div></div>
-            <div class="text-center border-x border-white/5"><div class="text-lg font-bold text-white">2in1</div><div class="text-xs text-slate-500">Portfolio+Shop</div></div>
-            <div class="text-center"><div class="text-lg font-bold text-white">Dark</div><div class="text-xs text-slate-500">Aesthetic</div></div>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tag">Branding</span><span class="tag">UI/UX</span><span class="tag">Beat Marketplace</span><span class="tag">Dark Theme</span>
-            <span class="inline-flex items-center gap-1 rounded-full border border-purple-500/35 bg-purple-500/10 px-3 py-1 text-xs font-bold text-purple-300">🎧 Trap · Hip-Hop</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Asesoría Hispamar -->
-      <a href="https://asesoriahispamar.com/" target="_blank" class="group reveal glass glass-hover rounded-2xl p-8 relative overflow-hidden">
-        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-orange-500/60 to-transparent"></div>
-        <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-orange-500/5 group-hover:bg-orange-500/10 transition-all blur-2xl"></div>
-        <div class="relative z-10">
-          <div class="flex items-start justify-between mb-4">
-            <div><span class="section-label text-orange-400">⚖️ Legal Tech · Spain 🇪🇸🇲🇦</span><h3 class="text-xl font-bold mt-1">Asesoría Hispamar</h3></div>
-            <span class="text-slate-500 group-hover:text-orange-400 transition-colors font-mono text-xs mt-6">asesoriahispamar.com ↗</span>
-          </div>
-          <p class="text-slate-400 text-sm leading-relaxed mb-5">Professional legal advisory website for immigration & Spanish nationality law in Fuengirola. Trust-first design, direct WhatsApp CTA, SEO-optimized for Google Spain — delivering 100% PageSpeed across all 4 languages.</p>
-          <div class="grid grid-cols-3 gap-3 mb-5 p-4 rounded-xl bg-white/[.02] border border-white/5">
-            <div class="text-center"><div class="text-lg font-bold text-white">4</div><div class="text-xs text-slate-500">Languages</div></div>
-            <div class="text-center border-x border-white/5"><div class="text-lg font-bold text-white">100%</div><div class="text-xs text-slate-500">PageSpeed</div></div>
-            <div class="text-center"><div class="text-lg font-bold text-white">9.2</div><div class="text-xs text-slate-500">Design Score</div></div>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tag">Next.js</span><span class="tag">Tailwind</span><span class="tag">i18n × 4</span><span class="tag">SEO</span>
-            <span class="badge-perf inline-flex items-center gap-1 rounded-full border border-emerald-500/35 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-300">⚡ 100% Perf</span>
-          </div>
-        </div>
-      </a>
-
-      <!-- Rachadi Wedding -->
-      <a href="https://rachadiwedding.com/" target="_blank" class="group reveal delay-1 glass glass-hover rounded-2xl p-8 relative overflow-hidden">
-        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-rose-400/60 to-transparent"></div>
-        <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-rose-500/5 group-hover:bg-rose-500/10 transition-all blur-2xl"></div>
-        <div class="absolute top-5 right-5 badge-new rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2.5 py-0.5 text-xs font-bold text-emerald-300">✦ NEW</div>
-        <div class="relative z-10">
-          <div class="flex items-start justify-between mb-4">
-            <div>
-              <span class="section-label text-rose-400">💍 Wedding Visual · France 🇫🇷</span>
-              <h3 class="text-xl font-bold mt-1">RH Visual — Wedding Brand</h3>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+          
+          <a href="https://triana.ma/" target="_blank" class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
+            <div class="relative z-10">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-blue-400">Chefchaouen Initiative</span>
+                <span class="text-xs text-slate-500 group-hover:text-blue-400 transition-colors">triana.ma ↗</span>
+              </div>
+              <h3 class="text-2xl font-bold">Triana Restaurant</h3>
+              <p class="mt-4 text-slate-400">High-performance multilingual platform with custom reservation flow and local SEO optimization for Moroccan tourism.</p>
             </div>
-            <span class="text-slate-500 group-hover:text-rose-400 transition-colors font-mono text-xs mt-6">rachadiwedding.com ↗</span>
-          </div>
-          <p class="text-slate-400 text-sm leading-relaxed mb-5">Luxury cinematic wedding identity platform for a high-end French visual studio. Elegant, editorial design with immersive full-screen storytelling, curated gallery showcase, and seamless client inquiry flow — crafted to attract couples seeking a premium experience in France.</p>
-          <div class="grid grid-cols-3 gap-3 mb-5 p-4 rounded-xl bg-white/[.02] border border-white/5">
-            <div class="text-center"><div class="text-lg font-bold text-white">Luxury</div><div class="text-xs text-slate-500">Aesthetic</div></div>
-            <div class="text-center border-x border-white/5"><div class="text-lg font-bold text-white">100%</div><div class="text-xs text-slate-500">PageSpeed</div></div>
-            <div class="text-center"><div class="text-lg font-bold text-white">9.5</div><div class="text-xs text-slate-500">Design Score</div></div>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tag">Next.js</span><span class="tag">Tailwind</span><span class="tag">Framer Motion</span><span class="tag">Gallery UX</span>
-            <span class="inline-flex items-center gap-1 rounded-full border border-rose-500/35 bg-rose-500/10 px-3 py-1 text-xs font-bold text-rose-300">💍 Cinematic · Editorial</span>
-          </div>
-        </div>
-      </a>
+          </a>
 
-      <!-- ✅ NEW: Mandala Pizzeria -->
-      <a href="https://mandalapizzeria.com/" target="_blank" class="group reveal glass glass-hover rounded-2xl p-8 relative overflow-hidden">
-        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-green-500/60 to-transparent"></div>
-        <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-green-500/5 group-hover:bg-green-500/10 transition-all blur-2xl"></div>
-        <div class="absolute top-5 right-5 badge-new rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2.5 py-0.5 text-xs font-bold text-emerald-300">✦ NEW</div>
-        <div class="relative z-10">
-          <div class="flex items-start justify-between mb-4">
-            <div>
-              <span class="section-label text-green-400">🍕 Restaurant Web App · Chefchaouen 🇲🇦</span>
-              <h3 class="text-xl font-bold mt-1">Mandala Pizzeria</h3>
+          <a href="https://bachirzairi.com/" target="_blank" class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
+            <div class="relative z-10">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-purple-400">Artist Ecosystems</span>
+                <span class="text-xs text-slate-500 group-hover:text-purple-400 transition-colors">bachirzairi.com ↗</span>
+              </div>
+              <h3 class="text-2xl font-bold">Bachir Zairi</h3>
+              <p class="mt-4 text-slate-400">A minimal, focus-driven identity site designed to highlight professional achievements, audio/video integration, and conversion.</p>
             </div>
-            <span class="text-slate-500 group-hover:text-green-400 transition-colors font-mono text-xs mt-6">mandalapizzeria.com ↗</span>
-          </div>
-          <p class="text-slate-400 text-sm leading-relaxed mb-5">Full-featured online ordering experience for an Italian pizzeria in Chefchaouen. Multilingual interactive menu with category filtering, real-time cart workflow, business-hours logic, Firebase Firestore order management, and QR review system.</p>
-          <div class="grid grid-cols-3 gap-3 mb-5 p-4 rounded-xl bg-white/[.02] border border-white/5">
-            <div class="text-center"><div class="text-lg font-bold text-white">3</div><div class="text-xs text-slate-500">Languages</div></div>
-            <div class="text-center border-x border-white/5"><div class="text-lg font-bold text-white">Live</div><div class="text-xs text-slate-500">Orders</div></div>
-            <div class="text-center"><div class="text-lg font-bold text-white">QR</div><div class="text-xs text-slate-500">Reviews</div></div>
-          </div>
-          <div class="flex flex-wrap gap-2">
-            <span class="tag">React</span><span class="tag">Vite</span><span class="tag">TypeScript</span><span class="tag">Tailwind</span><span class="tag">Firebase</span>
-            <span class="inline-flex items-center gap-1 rounded-full border border-green-500/35 bg-green-500/10 px-3 py-1 text-xs font-bold text-green-300">🍕 Italian · Chefchaouen</span>
-          </div>
-        </div>
-      </a>
+          </a>
 
-      <!-- Chess Association -->
-      <div class="reveal glass glass-hover rounded-2xl p-8 relative overflow-hidden">
-        <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent"></div>
-        <div class="relative z-10 grid sm:grid-cols-[1fr_auto] gap-6 items-start">
-          <div>
-            <span class="section-label text-amber-400">♟️ Chess & Culture · Chefchaouen</span>
-            <h3 class="text-xl font-bold mt-1 mb-3">Association Alwan Fannia d'Échecs</h3>
-            <p class="text-slate-400 text-sm leading-relaxed mb-5">Modern association website for editions, event announcements, registrations, and celebrating Chefchaouen's chess heritage. CMS-ready and multilingual from day one.</p>
-            <div class="flex flex-wrap gap-2">
-              <span class="tag">Next.js</span><span class="tag">SEO</span><span class="tag">CMS-ready</span><span class="tag">Multilingual</span><span class="tag">Event System</span>
+          <a href="https://segurofuengirola.es/" target="_blank" class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-lime-400/60 to-transparent"></div>
+            <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-lime-500/10 blur-3xl transition-all group-hover:bg-lime-500/20"></div>
+            <div class="relative z-10">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-lime-400">Insurance Tech · Spain</span>
+                <span class="text-xs text-slate-500 group-hover:text-lime-400 transition-colors">segurofuengirola.es ↗</span>
+              </div>
+              <h3 class="text-2xl font-bold">Seguro Fuengirola</h3>
+              <p class="mt-4 text-slate-400">Multilingual DKV insurance advisory platform for Fuengirola with conversion-focused service pages, WhatsApp lead flow, structured SEO, and localized content in Spanish, English, French, and Arabic.</p>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">Next.js</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">Tailwind</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">i18n x4</span>
+                <span class="rounded-full border border-lime-500/30 bg-lime-500/10 px-3 py-1 text-xs font-bold text-lime-300">SEO-ready</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://asesoriahispamar.com/" target="_blank" class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-orange-400/60 to-transparent"></div>
+            <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-orange-500/10 blur-3xl transition-all group-hover:bg-orange-500/20"></div>
+            <div class="relative z-10">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold uppercase tracking-widest text-orange-400">Legal Tech · Spain</span>
+                <span class="text-xs text-slate-500 group-hover:text-orange-400 transition-colors">asesoriahispamar.com ↗</span>
+              </div>
+              <h3 class="text-2xl font-bold">Asesoría Hispamar</h3>
+              <p class="mt-4 text-slate-400">Professional legal advisory website for immigration and Spanish nationality law in Fuengirola, with trust-first design, direct WhatsApp CTA, multilingual SEO, and fast static delivery.</p>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">Next.js</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">Tailwind</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">i18n x4</span>
+                <span class="rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-1 text-xs font-bold text-orange-300">Legal SEO</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://rachadiwedding.com/" target="_blank" class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-rose-400/60 to-transparent"></div>
+            <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-rose-500/10 blur-3xl transition-all group-hover:bg-rose-500/20"></div>
+            <div class="absolute right-6 top-6 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2.5 py-0.5 text-xs font-bold text-emerald-300">NEW</div>
+            <div class="relative z-10">
+              <div class="flex items-center justify-between mb-2 pr-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-rose-400">Wedding Visual · France</span>
+                <span class="text-xs text-slate-500 group-hover:text-rose-400 transition-colors">rachadiwedding.com ↗</span>
+              </div>
+              <h3 class="text-2xl font-bold">RH Visual — Wedding Brand</h3>
+              <p class="mt-4 text-slate-400">Luxury cinematic wedding identity platform for a French visual studio, built with immersive storytelling, gallery-focused UX, and a clean inquiry path for premium clients.</p>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">Next.js</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">Tailwind</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">Framer Motion</span>
+                <span class="rounded-full border border-rose-500/30 bg-rose-500/10 px-3 py-1 text-xs font-bold text-rose-300">Cinematic UX</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://mandalapizzeria.com/" target="_blank" class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05]">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-green-400/60 to-transparent"></div>
+            <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-green-500/10 blur-3xl transition-all group-hover:bg-green-500/20"></div>
+            <div class="absolute right-6 top-6 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2.5 py-0.5 text-xs font-bold text-emerald-300">NEW</div>
+            <div class="relative z-10">
+              <div class="flex items-center justify-between mb-2 pr-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-green-400">Restaurant Web App · Morocco</span>
+                <span class="text-xs text-slate-500 group-hover:text-green-400 transition-colors">mandalapizzeria.com ↗</span>
+              </div>
+              <h3 class="text-2xl font-bold">Mandala Pizzeria</h3>
+              <p class="mt-4 text-slate-400">Full-featured online ordering experience for an Italian pizzeria in Chefchaouen, with multilingual menu, category filtering, cart flow, business-hours logic, Firebase orders, and QR reviews.</p>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">React</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">Vite</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">TypeScript</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">Firebase</span>
+                <span class="rounded-full border border-green-500/30 bg-green-500/10 px-3 py-1 text-xs font-bold text-green-300">Live Orders</span>
+              </div>
+            </div>
+          </a>
+
+          <div class="group reveal glass-card relative overflow-hidden rounded-3xl p-8">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-amber-400/60 to-transparent"></div>
+            <div class="relative z-10">
+              <span class="text-xs font-bold uppercase tracking-widest text-amber-400">Chess & Culture · Chefchaouen</span>
+              <h3 class="mt-2 text-2xl font-bold">Association Alwan Fannia d'Échecs</h3>
+              <p class="mt-4 text-slate-400">Modern association website for editions, event announcements, registrations, and celebrating Chefchaouen's chess heritage, designed to be CMS-ready and multilingual from day one.</p>
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">Next.js</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">SEO</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">CMS-ready</span>
+                <span class="rounded-full border border-amber-500/30 bg-amber-500/10 px-3 py-1 text-xs font-bold text-amber-300">Event System</span>
+              </div>
             </div>
           </div>
-          <div class="hidden sm:flex flex-col items-end gap-2 text-right">
-            <span class="text-5xl">♟️</span>
-            <span class="text-xs text-slate-600">Chefchaouen, MA</span>
+
+          <div class="group reveal glass-card relative overflow-hidden rounded-3xl p-8">
+            <div class="relative z-10">
+              <span class="text-xs font-bold uppercase tracking-widest text-emerald-400">Educational Platforms</span>
+              <h3 class="mt-2 text-2xl font-bold">Learning Systems</h3>
+              <p class="mt-4 text-slate-400">Tools that guide, inform, and empower through interactive learning experiences and career orientation systems.</p>
+            </div>
+          </div>
+
+          <div class="group reveal glass-card relative overflow-hidden rounded-3xl p-8">
+            <div class="relative z-10">
+              <span class="text-xs font-bold uppercase tracking-widest text-amber-400">AI-Powered Tools</span>
+              <h3 class="mt-2 text-2xl font-bold">Intelligent Automation</h3>
+              <p class="mt-4 text-slate-400">Content generation assistants and data analysis dashboards designed to enhance modern productivity workflows.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="py-20 border-t border-white/5 reveal">
+        <div class="grid md:grid-cols-2 gap-12">
+          
+          <div class="glass p-8 rounded-3xl">
+            <h3 class="text-2xl font-bold mb-6">📈 Current Focus</h3>
+            <ul class="space-y-4 text-slate-300">
+              <li class="flex items-start gap-3"><span class="text-xl">🎯</span> <span><strong class="text-white">Building</strong> scalable SaaS applications</span></li>
+              <li class="flex items-start gap-3"><span class="text-xl">🛡️</span> <span><strong class="text-white">Deepening</strong> cybersecurity and ethical hacking skills</span></li>
+              <li class="flex items-start gap-3"><span class="text-xl">🌐</span> <span><strong class="text-white">Empowering</strong> Moroccan businesses via digital transformation</span></li>
+              <li class="flex items-start gap-3"><span class="text-xl">🚀</span> <span><strong class="text-white">Exploring</strong> Web3, blockchain, and decentralized systems</span></li>
+              <li class="flex items-start gap-3"><span class="text-xl">📚</span> <span><strong class="text-white">Learning</strong> system design and cloud architecture (AWS, GCP)</span></li>
+            </ul>
+          </div>
+
+          <div class="glass p-8 rounded-3xl">
+            <h3 class="text-2xl font-bold mb-6">💼 Collaboration & Services</h3>
+            <p class="text-slate-400 mb-6">I am currently available for specific engagements and consulting:</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-2 text-slate-300">
+              <div class="flex items-center gap-2">✓ Full-stack dev</div>
+              <div class="flex items-center gap-2">✓ Technical consulting</div>
+              <div class="flex items-center gap-2">✓ Code optimization</div>
+              <div class="flex items-center gap-2">✓ Security assessments</div>
+              <div class="flex items-center gap-2">✓ Digital transformation</div>
+              <div class="flex items-center gap-2">✓ Open-source colabs</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <footer id="contact" class="py-24 border-t border-white/5">
+        <div class="reveal text-center max-w-2xl mx-auto">
+          <h2 class="text-4xl font-bold mb-6">📫 Let's build something great.</h2>
+          <p class="text-slate-400 text-lg mb-10">
+            "First, solve the problem. Then, write the code."<br>
+            <span class="text-sm mt-2 inline-block">— Open to remote opportunities and international collaboration.</span>
+          </p>
+          
+          <div class="flex flex-col sm:flex-row justify-center items-center gap-4 mb-16">
+             <button id="copyEmailBtn" class="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-8 py-4 font-bold text-white transition-all hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]">
+                ✉️ mkbarrri@gmail.com
+             </button>
+             <a href="https://github.com/MEEDEXE" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 rounded-xl bg-white/5 border border-white/10 px-8 py-4 font-bold text-white transition-all hover:bg-white/10">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
+                MEEDEXE
+             </a>
+          </div>
+
+          <div class="text-sm text-slate-500 space-y-2">
+            <p>Explore freely. Learn continuously. Build responsibly. Credit always.</p>
+            <p>&copy; <span id="year"></span> Engineered with precision by MEEDEXE 🔵</p>
+            <div class="mt-4 flex justify-center">
+              <img src="https://img.shields.io/badge/Built_with-Camel_&_Coffee-E74C3C?style=flat-square" alt="Built with Coffee">
+            </div>
           </div>
         </div>
-      </div>
+      </footer>
+    </main>
 
-    </div>
-  </div>
-</section>
-
-<section class="py-16 sm:py-24 border-t border-white/5">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6">
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="reveal glass rounded-2xl p-8">
-        <p class="section-label mb-4">Right now</p>
-        <h3 class="text-xl font-bold mb-6">📈 Current Focus</h3>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3 text-sm"><span class="mt-0.5 h-5 w-5 rounded-full bg-blue-500/20 flex items-center justify-center shrink-0 text-xs">🎯</span><span class="text-slate-300"><strong class="text-white">Building</strong> scalable SaaS applications for MENA market</span></li>
-          <li class="flex items-start gap-3 text-sm"><span class="mt-0.5 h-5 w-5 rounded-full bg-red-500/20 flex items-center justify-center shrink-0 text-xs">🛡️</span><span class="text-slate-300"><strong class="text-white">Deepening</strong> cybersecurity & ethical hacking skills</span></li>
-          <li class="flex items-start gap-3 text-sm"><span class="mt-0.5 h-5 w-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0 text-xs">🌐</span><span class="text-slate-300"><strong class="text-white">Empowering</strong> Moroccan businesses via digital transformation</span></li>
-          <li class="flex items-start gap-3 text-sm"><span class="mt-0.5 h-5 w-5 rounded-full bg-purple-500/20 flex items-center justify-center shrink-0 text-xs">🚀</span><span class="text-slate-300"><strong class="text-white">Exploring</strong> Web3, blockchain & decentralized systems</span></li>
-          <li class="flex items-start gap-3 text-sm"><span class="mt-0.5 h-5 w-5 rounded-full bg-amber-500/20 flex items-center justify-center shrink-0 text-xs">📚</span><span class="text-slate-300"><strong class="text-white">Learning</strong> system design & cloud architecture (AWS, GCP)</span></li>
-        </ul>
-      </div>
-      <div class="reveal delay-1 glass rounded-2xl p-8">
-        <p class="section-label mb-4">Open for</p>
-        <h3 class="text-xl font-bold mb-2">💼 Collaboration</h3>
-        <p class="text-slate-400 text-sm mb-7">Available for specific engagements and consulting work:</p>
-        <div class="grid grid-cols-2 gap-3">
-          <div class="flex items-center gap-2.5 text-sm text-slate-300 p-3 rounded-xl bg-white/[.02] border border-white/5"><span class="text-blue-400">✓</span> Full-stack dev</div>
-          <div class="flex items-center gap-2.5 text-sm text-slate-300 p-3 rounded-xl bg-white/[.02] border border-white/5"><span class="text-blue-400">✓</span> Technical consulting</div>
-          <div class="flex items-center gap-2.5 text-sm text-slate-300 p-3 rounded-xl bg-white/[.02] border border-white/5"><span class="text-blue-400">✓</span> Code optimization</div>
-          <div class="flex items-center gap-2.5 text-sm text-slate-300 p-3 rounded-xl bg-white/[.02] border border-white/5"><span class="text-blue-400">✓</span> Security audits</div>
-          <div class="flex items-center gap-2.5 text-sm text-slate-300 p-3 rounded-xl bg-white/[.02] border border-white/5"><span class="text-blue-400">✓</span> Digital transformation</div>
-          <div class="flex items-center gap-2.5 text-sm text-slate-300 p-3 rounded-xl bg-white/[.02] border border-white/5"><span class="text-blue-400">✓</span> Open-source colabs</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer id="contact" class="py-16 sm:py-24 border-t border-white/5">
-  <div class="mx-auto max-w-3xl px-4 sm:px-6 text-center">
-    <div class="reveal">
-      <p class="section-label mb-4">Get in touch</p>
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight gradient-text mb-6">Let's build something<br>extraordinary.</h2>
-      <p class="text-slate-400 text-lg mb-3 leading-relaxed">"First, solve the problem. Then, write the code."</p>
-      <p class="text-slate-500 text-sm mb-12">Open to remote opportunities & international collaboration.</p>
-      <div class="flex flex-col sm:flex-row justify-center gap-3 mb-14">
-        <button id="copyEmailBtn" class="btn-primary flex items-center justify-center gap-2.5 rounded-xl px-6 py-4 font-bold text-white w-full sm:w-auto">
-          <svg class="h-4 w-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          mkbarrri@gmail.com
-        </button>
-        <a href="https://github.com/MEEDEXE" target="_blank" class="btn-ghost flex items-center justify-center gap-2.5 rounded-xl px-6 py-4 font-bold text-slate-200 w-full sm:w-auto">
-          <svg class="h-4 w-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path></svg>
-          GitHub
-        </a>
-      </div>
-      <div class="border-t border-white/5 pt-10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
-        <span>Explore freely. Learn continuously. Build responsibly.</span>
-        <span>© <span id="year"></span> Engineered with precision by MEEDEXE 🔵</span>
-      </div>
-    </div>
-  </div>
-</footer>
-
-</main>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const revealEls = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver((entries) => {
+    <script>
+      const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+      const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
+          if (entry.isIntersecting) entry.target.classList.add('is-visible');
         });
-      }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
-      revealEls.forEach(el => io.observe(el));
-      setTimeout(() => {
-        revealEls.forEach(el => { const rect = el.getBoundingClientRect(); if (rect.top < window.innerHeight) el.classList.add('visible'); });
-      }, 100);
-    } else { revealEls.forEach(el => el.classList.add('visible')); }
+      }, observerOptions);
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    const skillSection = document.getElementById('about');
-    if (skillSection && 'IntersectionObserver' in window) {
-      const skillIO = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.skill-fill').forEach(bar => { bar.style.width = bar.dataset.width + '%'; });
-            skillIO.unobserve(entry.target);
-          }
+      document.querySelectorAll('[data-tilt]').forEach(card => {
+        card.addEventListener('mousemove', e => {
+          const rect = card.getBoundingClientRect();
+          const x = (e.clientX - rect.left - rect.width / 2) / 20;
+          const y = (rect.height / 2 - (e.clientY - rect.top)) / 20;
+          card.style.transform = `perspective(1000px) rotateX(${y}deg) rotateY(${x}deg)`;
         });
-      }, { threshold: 0.15 });
-      skillIO.observe(skillSection);
-    }
-
-    const nav = document.getElementById('nav');
-    const onScroll = () => {
-      if (!nav) return;
-      if (window.scrollY > 20) {
-        nav.style.background = 'rgba(2,8,23,.92)'; nav.style.backdropFilter = 'blur(20px)';
-        nav.style.webkitBackdropFilter = 'blur(20px)'; nav.style.borderBottom = '1px solid rgba(255,255,255,.06)';
-      } else {
-        nav.style.background = 'transparent'; nav.style.backdropFilter = 'none';
-        nav.style.webkitBackdropFilter = 'none'; nav.style.borderBottom = 'none';
-      }
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    const burger = document.getElementById('burger');
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (burger && mobileMenu) {
-      burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-      mobileMenu.querySelectorAll('a').forEach(a => { a.addEventListener('click', () => mobileMenu.classList.remove('open')); });
-    }
-
-    const copyBtn = document.getElementById('copyEmailBtn');
-    if (copyBtn) {
-      copyBtn.addEventListener('click', () => {
-        navigator.clipboard.writeText('mkbarrri@gmail.com').catch(() => {});
-        const orig = copyBtn.innerHTML;
-        copyBtn.innerHTML = '✅ Copied!';
-        copyBtn.style.background = 'linear-gradient(135deg,#059669,#047857)';
-        setTimeout(() => { copyBtn.innerHTML = orig; copyBtn.style.background = ''; }, 2000);
+        card.addEventListener('mouseleave', () => card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)');
       });
-    }
 
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      document.getElementById('copyEmailBtn').addEventListener('click', () => {
+        navigator.clipboard.writeText('mkbarrri@gmail.com');
+        const btn = document.getElementById('copyEmailBtn');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '✅ Copied to clipboard!';
+        btn.classList.replace('bg-blue-600', 'bg-emerald-600');
+        setTimeout(() => { 
+          btn.innerHTML = originalText; 
+          btn.classList.replace('bg-emerald-600', 'bg-blue-600');
+        }, 2000);
       });
-    });
 
-    const yearEl = document.getElementById('year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-  });
-</script>
-</body>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </body>
 </html>
