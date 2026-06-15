@@ -100,31 +100,72 @@
       ::-webkit-scrollbar { width: 8px; }
       ::-webkit-scrollbar-track { background: #020617; }
       ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+
+      /* Scroll progress indicator (matches the ASCII light-sweep palette) */
+      #scrollProgress {
+        position: fixed;
+        top: 0; left: 0;
+        height: 3px;
+        width: 0%;
+        z-index: 60;
+        background: linear-gradient(to right, #3b82f6, #22d3ee, #ffffff);
+        box-shadow: 0 0 12px rgba(34,211,238,.6);
+        transition: width .1s linear;
+      }
+
+      /* Gradient text accent */
+      .text-gradient {
+        background: linear-gradient(to right, #60a5fa 0%, #22d3ee 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      /* Card hover polish — subtle top accent + glow, keeps the existing style */
+      .glass-card { position: relative; }
+      .glass-card::after {
+        content: "";
+        position: absolute;
+        left: 0; right: 0; top: 0;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(59,130,246,.55), transparent);
+        opacity: 0;
+        transition: opacity .35s ease;
+        pointer-events: none;
+      }
+      .glass-card:hover::after { opacity: 1; }
+      .glass-card:hover,
+      .glass:hover {
+        box-shadow: 0 24px 60px rgba(2,6,23,.55), 0 0 0 1px rgba(59,130,246,.18);
+      }
+
+      /* Animated section heading underline */
+      .heading-rule {
+        height: 2px; width: 0;
+        background: linear-gradient(to right, #3b82f6, #22d3ee);
+        border-radius: 9999px;
+        transition: width .9s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      .reveal.is-visible .heading-rule { width: 4.5rem; }
     </style>
   </head>
 
   <body class="bg-slate-950 text-slate-100 selection:bg-blue-500/30">
+    <div id="scrollProgress"></div>
     <div class="fixed inset-0 -z-10 bg-vignette">
       <div class="absolute inset-0 bg-grid"></div>
       <div class="blob b1"></div>
       <div class="blob b2"></div>
     </div>
 
-    <header class="sticky top-0 z-50 border-b border-white/5 bg-slate-950/80 backdrop-blur-xl">
-      <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+    <header class="sticky top-0 z-50 border-b border-white/5 bg-slate-950/70 backdrop-blur-xl">
+      <nav class="mx-auto flex max-w-7xl items-center justify-center px-6 py-4">
         <a href="#top" class="group flex items-center gap-3">
-          <div class="relative h-10 w-10 overflow-hidden rounded-xl ring-1 ring-white/20 transition-transform group-hover:scale-110">
+          <div class="relative h-10 w-10 overflow-hidden rounded-xl ring-1 ring-white/20 transition-transform duration-300 group-hover:scale-110 group-hover:ring-blue-400/50">
             <img src="https://i.ibb.co/JwytwC47/92868863.jpg" onerror="this.onerror=null;this.src='./92868863.jpeg';" alt="MEEDEXE" class="h-full w-full object-cover" />
           </div>
           <span class="text-lg font-bold tracking-tighter">MEEDEXE</span>
         </a>
-        <div class="hidden md:flex items-center gap-8">
-          <a href="#about" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">About</a>
-          <a href="#expertise" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Expertise</a>
-          <a href="#stack" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Tech Stack</a>
-          <a href="#work" class="text-sm font-medium text-slate-400 hover:text-white transition-colors">Projects</a>
-        </div>
-        <a href="#contact" class="rounded-full bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition-all hover:bg-blue-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]">Hire Me</a>
       </nav>
     </header>
 
@@ -157,7 +198,7 @@
             </div>
 
             <h1 class="text-3xl font-bold tracking-tight text-white sm:text-5xl leading-tight">
-              Creative Developer <br/>
+              <span class="text-gradient">Creative Developer</span> <br/>
               <span class="text-slate-400">& Digital Architect.</span>
             </h1>
 
@@ -208,8 +249,9 @@
 
       <section id="expertise" class="py-24">
         <div class="reveal mb-12 text-center md:text-left">
-          <h2 class="text-3xl font-bold">🚀 What I Build</h2>
-          <p class="mt-2 text-slate-400">Transforming problems into scalable digital solutions.</p>
+          <h2 class="text-3xl font-bold">🚀 <span class="text-gradient">What I Build</span></h2>
+          <div class="heading-rule mx-auto md:mx-0 mt-4"></div>
+          <p class="mt-4 text-slate-400">Transforming problems into scalable digital solutions.</p>
         </div>
 
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -316,8 +358,9 @@
 
       <section id="stack" class="py-20 border-t border-white/5">
         <div class="reveal mb-12 text-center md:text-left">
-          <h2 class="text-3xl font-bold">🛠 Tech Arsenal</h2>
-          <p class="mt-2 text-slate-400">The tools I use to build robust digital products.</p>
+          <h2 class="text-3xl font-bold">🛠 <span class="text-gradient">Tech Arsenal</span></h2>
+          <div class="heading-rule mx-auto md:mx-0 mt-4"></div>
+          <p class="mt-4 text-slate-400">The tools I use to build robust digital products.</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-8">
@@ -360,8 +403,9 @@
 
       <section id="work" class="py-24 border-t border-white/5">
         <div class="reveal mb-12">
-          <h2 class="text-3xl font-bold">🌍 Featured Projects</h2>
-          <p class="mt-2 text-slate-400">Live sites and high-impact digital initiatives.</p>
+          <h2 class="text-3xl font-bold">🌍 <span class="text-gradient">Featured Projects</span></h2>
+          <div class="heading-rule mt-4"></div>
+          <p class="mt-4 text-slate-400">Live sites and high-impact digital initiatives.</p>
         </div>
 
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
@@ -583,7 +627,7 @@
 
       <footer id="contact" class="py-24 border-t border-white/5">
         <div class="reveal text-center max-w-2xl mx-auto">
-          <h2 class="text-4xl font-bold mb-6">📫 Let's build something great.</h2>
+          <h2 class="text-4xl font-bold mb-6">📫 <span class="text-gradient">Let's build something great.</span></h2>
           <p class="text-slate-400 text-lg mb-10">
             "First, solve the problem. Then, write the code."<br>
             <span class="text-sm mt-2 inline-block">— Open to remote opportunities and international collaboration.</span>
@@ -619,6 +663,18 @@
     </main>
 
     <script>
+      // Top scroll-progress bar
+      const progressBar = document.getElementById('scrollProgress');
+      const updateProgress = () => {
+        const doc = document.documentElement;
+        const scrolled = doc.scrollTop || document.body.scrollTop;
+        const height = doc.scrollHeight - doc.clientHeight;
+        progressBar.style.width = height > 0 ? (scrolled / height) * 100 + '%' : '0%';
+      };
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      window.addEventListener('resize', updateProgress);
+      updateProgress();
+
       const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
