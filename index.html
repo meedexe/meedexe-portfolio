@@ -56,13 +56,13 @@
         66% { transform: translate(-20px, 20px) scale(0.9); }
       }
 
-      /* UPDATED: ASCII Styling with Light Sweep Animation */
+
       .ascii-container {
         font-family: 'Courier New', Courier, monospace;
         font-weight: 900;
         line-height: 1.1;
         display: inline-block;
-        /* Triple-layered gradient for the "moving light" effect */
+
         background: linear-gradient(
           to right,
           #3b82f6 0%,
@@ -89,7 +89,6 @@
       .reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
       .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-      /* Syntax Highlighting */
       .code-block { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
       .token-keyword { color: #c678dd; }
       .token-const { color: #e5c07b; }
@@ -101,7 +100,6 @@
       ::-webkit-scrollbar-track { background: #020617; }
       ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
 
-      /* Scroll progress indicator (matches the ASCII light-sweep palette) */
       #scrollProgress {
         position: fixed;
         top: 0; left: 0;
@@ -113,7 +111,7 @@
         transition: width .1s linear;
       }
 
-      /* Gradient text accent */
+
       .text-gradient {
         background: linear-gradient(to right, #60a5fa 0%, #22d3ee 100%);
         -webkit-background-clip: text;
@@ -121,7 +119,6 @@
         color: transparent;
       }
 
-      /* Card hover polish — subtle top accent + glow, keeps the existing style */
       .glass-card { position: relative; }
       .glass-card::after {
         content: "";
@@ -139,7 +136,7 @@
         box-shadow: 0 24px 60px rgba(2,6,23,.55), 0 0 0 1px rgba(59,130,246,.18);
       }
 
-      /* Animated section heading underline */
+   
       .heading-rule {
         height: 2px; width: 0;
         background: linear-gradient(to right, #3b82f6, #22d3ee);
@@ -415,7 +412,7 @@
                 build and the server — so the price a customer sees is always exactly what Stripe charges.
               </p>
 
-              <!-- Quick facts -->
+         
               <div class="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:grid-cols-4">
                 <div class="bg-slate-950/40 p-4">
                   <div class="text-lg font-bold text-white">14</div>
@@ -443,6 +440,55 @@
                 <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">Static Export</span>
                 <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-300">Stripe + PHP API</span>
                 <span class="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-bold text-blue-300">Technical SEO</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="https://rbi-insurance.ma/" target="_blank" class="group reveal glass relative overflow-hidden rounded-3xl p-8 transition-all hover:-translate-y-2 hover:bg-white/[0.05] md:col-span-2">
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-400/60 to-transparent"></div>
+            <div class="absolute -right-20 -top-20 h-48 w-48 rounded-full bg-sky-500/10 blur-3xl transition-all group-hover:bg-sky-500/20"></div>
+            <div class="absolute right-6 top-6 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2.5 py-0.5 text-xs font-bold text-emerald-300">NEW</div>
+            <div class="relative z-10">
+              <div class="flex items-center justify-between mb-2 pr-14">
+                <span class="text-xs font-bold uppercase tracking-widest text-sky-400">Insurance Tech · Morocco</span>
+                <span class="text-xs text-slate-500 group-hover:text-sky-400 transition-colors">rbi-insurance.ma ↗</span>
+              </div>
+              <h3 class="text-2xl font-bold">Right Brain Insurance</h3>
+              <p class="mt-4 text-slate-400">
+                Official <strong class="text-slate-200">Sanlam</strong> insurance agency platform for Morocco. A fully bilingual
+                <strong class="text-slate-200">Arabic / French</strong> experience with native RTL, built around an interactive
+                multi-step quote &amp; simulation wizard that surfaces a <strong class="text-slate-200">live premium estimate</strong> as the
+                user types, plus WhatsApp lead capture, a dark editorial design system, and structured technical SEO — shipped
+                as a static <strong class="text-slate-200">Next.js 14</strong> export.
+              </p>
+
+              <div class="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:grid-cols-4">
+                <div class="bg-slate-950/40 p-4">
+                  <div class="text-lg font-bold text-white">AR / FR</div>
+                  <div class="text-xs text-slate-500">i18n + RTL</div>
+                </div>
+                <div class="bg-slate-950/40 p-4">
+                  <div class="text-lg font-bold text-white">Live</div>
+                  <div class="text-xs text-slate-500">Quote estimate</div>
+                </div>
+                <div class="bg-slate-950/40 p-4">
+                  <div class="text-lg font-bold text-white">83</div>
+                  <div class="text-xs text-slate-500">Static pages</div>
+                </div>
+                <div class="bg-slate-950/40 p-4">
+                  <div class="text-lg font-bold text-white">Dark</div>
+                  <div class="text-xs text-slate-500">Editorial UI</div>
+                </div>
+              </div>
+
+              <div class="mt-6 flex flex-wrap gap-2">
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">Next.js 14</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">TypeScript</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">Tailwind</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">next-intl (AR/FR · RTL)</span>
+                <span class="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-slate-300">Static Export</span>
+                <span class="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-300">WhatsApp Leads</span>
+                <span class="rounded-full border border-sky-500/30 bg-sky-500/10 px-3 py-1 text-xs font-bold text-sky-300">Technical SEO</span>
               </div>
             </div>
           </a>
@@ -650,7 +696,7 @@
     </main>
 
     <script>
-      // Top scroll-progress bar
+   
       const progressBar = document.getElementById('scrollProgress');
       const updateProgress = () => {
         const doc = document.documentElement;
